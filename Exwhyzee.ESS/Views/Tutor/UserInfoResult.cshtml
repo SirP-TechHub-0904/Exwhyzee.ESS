@@ -1,0 +1,137 @@
+﻿@model Exwhyzee.ESS.Models.Entities.ParticipantResult
+
+
+    <main id="main">
+        <!-- heading banner -->
+        <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/img/for-web1.jpg);">
+            <div class="container holder">
+                <div class="align">
+                    <h3 style="">Your Result</h3>
+                </div>
+            </div>
+        </header>
+        <!-- breadcrumb nav -->
+        <nav class="breadcrumb-nav">
+            <div class="container">
+                <!-- breadcrumb -->
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">IQ Test</li>
+                </ol>
+            </div>
+        </nav>
+        
+        <!-- two columns -->
+        <div id="two-columns" class="container">
+            <div class="row">
+                <!-- content -->
+                <article id="content" class="col-xs-12 col-md-12">
+
+                    <div class="modal-conten">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">
+                                Your Result
+                            </h4>
+                            <h6>@TempData["Welcome"]</h6>
+                            <input type="hidden" name="answer5id" id="answer5id" value="@ViewBag.id" />
+                        </div>
+                        <div class="modal-body">
+                            @if (Model.Q1 == true)
+                            {
+                                <img src="~/Content/img/good.png" style="width:50px;height:50px;" />
+                            }
+                            else
+                            {
+                                 <img src="~/Content/img/bad.png" style="width:50px;height:50px;" />
+
+                            }
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            @if (Model.Q2 == true)
+                            {
+                                <img src="~/Content/img/good.png" style="width:50px;height:50px;" />
+                            }
+                            else
+                            {
+                                 <img src="~/Content/img/bad.png" style="width:50px;height:50px;" />
+
+                            }
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            @if (Model.Q3 == true)
+                            {
+                                <img src="~/Content/img/good.png" style="width:50px;height:50px;" />
+                            }
+                            else
+                            {
+                                 <img src="~/Content/img/bad.png" style="width:50px;height:50px;" />
+
+                            }
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            @if (Model.Q4 == true)
+                            {
+                                <img src="~/Content/img/good.png" style="width:50px;height:50px;" />
+                            }
+                            else
+                            {
+                                 <img src="~/Content/img/bad.png" style="width:50px;height:50px;" />
+
+                            }
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+                            @if (Model.Q5 == true)
+                            {
+                                <img src="~/Content/img/good.png" style="width:50px;height:50px;" />
+                            }
+                            else
+                            {
+                                 <img src="~/Content/img/bad.png" style="width:50px;height:50px;" />
+
+                            }
+                            &nbsp;
+                            &nbsp;
+                            &nbsp;
+
+                            <br />
+                            <div class="">
+                                @if (Model.Q1 == true && Model.Q2 == true && Model.Q3 == true && Model.Q4 == true && Model.Q5 == true)
+                                {
+                                    <h1>CONGRATULATIONS</h1>
+                                    <h4>Your number will be recharge immediately.</h4>
+                                }
+                                else
+                                {
+                                    <h1>
+                                        @Html.ActionLink("Try Again", "Question", "Tutor", new { id = Model.Participant.Id }, new { @class = "btn btn-warning" })
+                                        @Html.ActionLink("Know more about iskool", "index", "Iskools", null, new { @class = "btn btn-warning" })
+
+                                    </h1>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                                                                                  
+                        </div>
+                    </div>
+                </article>
+                <!-- sidebar -->
+                
+            </div>
+        </div>
+    </main>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+    </script>
+}

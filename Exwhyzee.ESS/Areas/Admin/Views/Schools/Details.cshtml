@@ -1,0 +1,114 @@
+﻿@model Exwhyzee.ESS.Models.Entities.NPSTschools
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NPSTschools</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebsiteLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebsiteLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HeadName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HeadName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PopulationSize)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PopulationSize)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LGA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LGA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.About)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

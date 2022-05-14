@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "GetStarted";
+}
+
+
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url();">
+        <div class="container holder">
+            <div class="align">
+                <h4 class="modal-title">Register to Answer 5 questions to win Recharge Card </h4>
+
+                @*<h3 style="color:#ffffff;">Teachers</h3>*@
+            </div>
+        </div>
+    </header>
+   
+
+
+
+    <div class="container">
+     
+        <div class="row" style="margin-top:15px;margin-bottom:10px;">
+
+            <div class="col-md-12" style="margin-bottom:5px;">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                        </div>
+                        <div class="modal-body">
+                            @using (Html.BeginForm("Name", "Tutor", null, FormMethod.Post, new { id = "", enctype = "multipart/form-data" }))
+                            {
+
+                                <div class="loginmodal-container">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <div class="">
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        <div class="form-group">
+                                            @Html.Label("Full Name", htmlAttributes: new { @class = "control-label" })
+                                            <div class="">
+                                                @Html.Editor("name", new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Email", htmlAttributes: new { @class = "control-label" })
+                                            <div class="">
+                                                @Html.Editor("email", new { htmlAttributes = new { @class = "form-control", type = "email" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Phone Number", htmlAttributes: new { @class = "control-label" })
+                                            <div class="">
+                                                @Html.Editor("phone", new { htmlAttributes = new { @class = "form-control", type = "number", required = "required" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.Label("Current School", htmlAttributes: new { @class = "control-label" })
+                                            <div class="">
+                                                @Html.Editor("school", new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <input type="submit" value="Start Test" class="login loginmodal-submit btn-primary" />
+                                    <input type="submit" value="Cancel" class="login loginmodal-submit btn-default" data-dismiss="modal" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</main>
+
+

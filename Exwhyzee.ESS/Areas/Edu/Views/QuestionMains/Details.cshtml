@@ -1,0 +1,90 @@
+﻿@model Exwhyzee.ESS.Models.QuestionMain
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>QuestionMain</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionCategory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            <img src="~/Uploads/@Model.Img" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextQ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

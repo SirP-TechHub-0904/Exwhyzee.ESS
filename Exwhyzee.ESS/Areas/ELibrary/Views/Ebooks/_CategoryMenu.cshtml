@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.BookCategory>
+
+@foreach (var m in Model)
+{
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-building-o"></i> <span> @m.Title</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            @foreach (var menu in m.Books.ToList())
+            {
+                <li><a href="@Url.Action("Details", "Ebooks", new { area = "ELibrary", id=menu.Id, title=menu.Title })"><i class="fa fa-circle-o"></i>@menu.Title</a></li>
+            }
+
+            </ul>
+    </li>
+
+}
+

@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.SchoolPortalData>
+@using Exwhyzee.ESS.Helper
+
+@{
+    ViewBag.Title = "ResultDMMM";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> Class Management</h3>
+
+                <div class="box-tools">
+
+                </div>
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        @TempData["success"]
+                    </div>
+                }
+                <form asp-page="./ResultDMMM" method="get">
+                    <div class="form-actions no-color">
+                        <div class="row">
+
+                            <div class="col-md-12">Enter Term and Session:</div>
+                            <div class="col-md-3"><input type="text" name="term" class="form-control" placeholder="term" /></div>
+                            <div class="col-md-3"><input type="text" name="session" class="form-control" placeholder="session" /></div>
+                            <div class="col-md-3"><input type="submit" value="Fetch" class="btn btn-primary" /></div>
+
+                            <div class="col-md-5">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- /.box-header -->
+            @if (Model != null)
+            {
+                if (Model.Count() > 1)
+                {
+                    if (ViewBag.session != null || ViewBag.term != null)
+                    {
+
+                        <div class="box-body table-responsive no-padding">
+                            <table id="example1" class="table table-bordered table-hover" border="1">
+
+                                <thead>
+                                    <tr>
+                                        <th>S/N</th>
+                                        <th>
+                                            School Name
+                                        </th>
+                                        <th>Term</th>
+                                        <th>Result</th>
+                                        <th>Cummulative</th>
+                                        <th>Total Enrolled</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int sno = 0;
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+
+                                        var Routput = IskoolHelper.SectionResult(ViewBag.session, ViewBag.term, item.Id);
+                                        if (Routput != null)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @{ sno++; }
+                                                    @sno
+                                                </td>
+
+                                                <td>
+                                                    <a target="_blank" href="@item.PortalUrl">
+                                                        @Html.DisplayFor(modelItem => item.SchoolName)
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @Routput.CurrentSession
+                                                </td>
+                                                <td>
+                                                    @Routput.EnrolStudentsCount
+                                                </td>
+                                                <td>
+                                                    @Routput.TotalCummulativeResults
+                                                </td>
+
+                                                <td>
+                                                    @Routput.TotalResults
+                                                </td>
+
+
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    }
+                }
+            }
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+

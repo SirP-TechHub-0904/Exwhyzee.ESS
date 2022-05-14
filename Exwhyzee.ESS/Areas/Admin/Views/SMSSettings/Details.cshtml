@@ -1,0 +1,47 @@
+﻿@model Exwhyzee.ESS.Models.Entities.SMSSettings
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Zoom Settings Detail</h3>
+
+
+                <div class="box-body">
+
+                    <dl class="dl-horizontal">
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SmsUsername)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SmsUsername)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SmsPassword)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SmsPassword)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id})
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

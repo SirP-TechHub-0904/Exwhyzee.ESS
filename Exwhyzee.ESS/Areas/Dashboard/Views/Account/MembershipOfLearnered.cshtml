@@ -1,0 +1,91 @@
+﻿@model Exwhyzee.ESS.Models.ProfileMembershipOfLearneredSociety.MembershipOfLearneredSocietyModel
+
+
+    <div class="box box-primary" id="MembershipOfLearnered">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update Membership Of Learnered Society</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box-body box-profile" style="border:1px solid #3c8dbc;">
+                        @foreach (var item in ViewBag.list)
+                        {
+
+                            @*<form id="ListExperienceModelForm" asp-page-handler="ExperienceDelete" enctype="multipart/form-data" method="post">
+                                <input type="hidden" name="experienceModelId" value="@item.Id" />
+
+                            </form>*@
+
+                            <div class="alert left_col alert-dismissible fade in" role="alert" style="padding:5px;margin-bottom:1px;border-radius:0px;padding-right:20px;background-color:#3c8dbc;color:#ffffff !important;">
+
+                                <button class="pull-right" onclick="window.location.href = '@Url.Action("DeleteMembershipOfLearnered", "Account", new { id = item.Id })';" style="font-weight:900;">X</button>
+                                <p>
+                                    @item.Title (@item.Abbr)
+
+                                </p>
+
+                            </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        @using (Html.BeginForm("MembershipOfLearnered", "Account", null, FormMethod.Post, new { id = "", @class = "", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <input type="hidden" name="UserProfileId" value="@ViewBag.id">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Title
+                            </label>
+                            <div class="">
+                                <input type="text" name="Title" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Abbr
+                            </label>
+                            <div class="">
+                                <input type="text" name="Abbr" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="">
+
+                        <button id="submit" type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

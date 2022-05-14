@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "CreateAccount";
+}
+
+@model Exwhyzee.ESS.Models.Entities.Dto.StudentDto
+
+@if (Request.Browser.IsMobileDevice == true)
+{
+    <style>
+        .heading-banner .holder {
+            min-height: 121px;
+        }
+    </style>
+}
+else
+{
+    <style>
+        .heading-banner .holder {
+            min-height: 201px;
+        }
+    </style>
+}
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/main-iskool/tagi.jpg);">
+        <div class="container holder">
+            <div class="align" style="padding:10px 0;">
+                <h1 style="padding:10px;margin:0 10px;">Subject Enrollment</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- user log block -->
+    <section class="container user-log-block">
+        <div class="row">
+            <div class="col-xs-2 col-md-2"></div>
+            <div class="col-xs-8 col-md-8">
+                <!-- user log form -->
+                @using (Html.BeginForm("SubjectEnrollment", "Auth", FormMethod.Post, new { @class = "", role = "", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+                <div class="user-log-form">
+                    <input type="hidden" name="userId" value="@ViewBag.userId" />
+                    <h1>Select Your Desired Subject</h1>
+                    @foreach (var sub in ViewBag.subject)
+                    {
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="subjectId" value="@sub.Id">@sub.Subject</label>
+                            </div>
+                        </div>
+
+                    }
+
+                    <div class="btns-wrap">
+                        <div class="wrap">
+
+                            <button type="submit" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Enroll</button>
+                        </div>
+
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="col-xs-2 col-md-2"></div>
+
+        </div>
+    </section>
+</main>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}

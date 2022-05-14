@@ -1,0 +1,84 @@
+﻿@model Exwhyzee.ESS.Models.Entities.Topic
+@using Exwhyzee.ESS.Helper;
+@{
+    ViewBag.Title = "VideoDetails";
+}
+    
+<div class="row">
+    <div class="col-md-8">
+        <!-- Box Comment -->
+        <div class="box box-widget">
+            <div class="box-header with-border">
+                <div class="user-block">
+                    <span class="username" style="margin-left:0px;"><a href="#">@Model.Title</a></span>
+                    <span class="description" style="margin-left:0px;">Video ID: @Model.VideoId  </span>
+                    <span class="description" style="margin-left:0px;">Uploaded By: @IskoolHelper.NameyId(Model.UserId)</span>
+                    <span class="description" style="margin-left:0px;">Approved: @Model.Approved</span>
+                    <span class="description" style="margin-left:0px;">Publish: @Model.Publish </span>
+                </div>
+                <!-- /.user-block -->
+               
+                <!-- /.box-tools -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="aligncenter content-aligncenter">
+                    <style>
+                        .fluid-width-video-wrapper {
+                            width: 100%;
+                            position: relative;
+                            padding: 0;
+                        }
+
+                            .fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                            }
+                    </style>
+                    <div>
+                        @if (Model.VideoUrl != null)
+                        {
+                            <iframe width="100%" height="480" src="@Model.VideoUrl?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                        }
+                        else
+                        {
+                            <style>
+                                video {
+                                    width: 100%;
+                                    height: auto;
+                                }
+                            </style>
+                            <div class="">
+
+                                <video controls autoplay loop>
+                                    <source src="~/Videos/@Model.VideoFile" type="video/mp4">
+                                </video>
+                            </div>
+
+                        }
+
+                    </div>
+
+
+                </div>
+
+                <p>@Model.Description</p>
+               
+            </div>
+            <!-- /.box-body -->
+            
+            <!-- /.box-footer -->
+            <div class="box-footer">
+                @Html.ActionLink("Back to List", "MyVideos", "Account", null, new { @class = "btn btn-primary" })
+            </div>
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+

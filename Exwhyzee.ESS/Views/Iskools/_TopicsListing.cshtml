@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.Topic>
+
+<aside class="col-xs-12 col-sm-6 col-md-3 col">
+    <h3>Popular Topics/Motivation</h3>
+    <!-- widget cources list -->
+    <ul class="widget-cources-list list-unstyled">
+        @foreach (var item in Model)
+        {
+
+            <li>
+                <a href="@Url.Action("UpdateDetails", "Tutor", new { id = item.Id, title = item.Title })">
+                    <div class="alignleft">
+                        <img src="~/Uploads/@item.VideoCover" alt="image description">
+                    </div>
+                    <div class="description-wrap">
+                        <h4>@item.Title</h4>
+                        <strong class="price text-primary element-block font-lato text-uppercase">Latest</strong>
+                    </div>
+                </a>
+            </li>
+
+        }
+
+    </ul>
+    <img src="~/Content/img/BULK SMS SM.jpg" class="img-responsive" />
+
+</aside>

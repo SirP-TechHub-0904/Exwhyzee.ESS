@@ -1,0 +1,832 @@
+﻿@model Exwhyzee.ESS.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+        <dt>External Logins:</dt>
+        <dd>
+            @Model.Logins.Count [
+            @Html.ActionLink("Manage", "ManageLogins") ]
+        </dd>
+        @*
+            Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+
+             See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+
+             Uncomment the following block after you have set up two-factor authentication
+        *@
+        @*
+            <dt>Phone Number:</dt>
+            <dd>
+                @(Model.PhoneNumber ?? "None")
+                @if (Model.PhoneNumber != null)
+                {
+                    <br />
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                    using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                    }
+                }
+                else
+                {
+                    <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                }
+            </dd>
+        *@
+        <dt>Two-Factor Authentication:</dt>
+        <dd>
+            <p>
+                There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                for details on setting up this ASP.NET application to support two-factor authentication.
+            </p>
+            @*@if (Model.TwoFactor)
+                {
+                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Enabled
+                        <input type="submit" value="Disable" class="btn btn-link" />
+                        </text>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Disabled
+                        <input type="submit" value="Enable" class="btn btn-link" />
+                        </text>
+                    }
+                }*@
+        </dd>
+    </dl>
+</div>
+
+
+
+
+
+
+
+<style>
+    #our-team-construct .single-construct-member .content:before {
+        background: #134dba;
+    }
+
+    footer.construct .widget .our-services li a {
+        color: #ffffff;
+        border-bottom: 1px solid #ffffff;
+    }
+
+        footer.construct .widget .our-services li a i:hover {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+    footer.construct .widget p, footer.construct .widget .popular-post li a h5, footer.construct .widget .contact-info li {
+        color: #ffffff;
+    }
+
+    #topbar.construct {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy .mainmenu-container > ul > li > a:hover {
+        color: #FFFFFF;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #ffffff;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #134dba;
+    }
+
+    #topbar.construct .contact-info ul li a {
+        color: #134dba;
+    }
+
+        #topbar.construct .contact-info ul li a:hover {
+            color: #134dba;
+        }
+
+    header.construct.header-curvy .logo:before {
+        background-color: #134dba !important;
+    }
+
+    .single-construction-welcome h2:after {
+        background: #134dba !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h2 {
+        color: #ffffff !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h3 {
+        color: #ffffff !important;
+    }
+
+    .section-title h1:before {
+        background: #134dba !important;
+    }
+
+    .service-tab-title ul li:hover, .service-tab-title ul li.active {
+        color: #134dba;
+    }
+
+        .service-tab-title ul li.active:before {
+            background: #134dba;
+        }
+
+    footer.construct .widget h3 {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    #bottom-bar.construct .container p {
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header.construct.header-curvy .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header.construct .mainmenu-container > ul > li.current > a, header.construct .mainmenu-container ul li a:hover, header.construct .mainmenu-container ul > li.dropdown:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:after, header.construct nav.mainmenu-container ul > li > ul > li > a:hover, header.construct nav.mainmenu-container ul > li > ul > li > a:hover:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:hover:after, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        color: #134dba;
+    }
+
+    .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header.construct.header-curvy {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy {
+        background: #fff;
+        border-top: 1px solid #134dba;
+        border-bottom: 1px solid #134dba;
+    }
+
+        header.construct.header-curvy .mainmenu-container > ul > li > a {
+            color: #134dba;
+        }
+
+            header.construct.header-curvy .mainmenu-container > ul > li > a:hover {
+                color: #3688be;
+            }
+
+        header.construct.header-curvy .mainmenu-container ul > li.dropdown:hover {
+            color: #3688be;
+        }
+
+    header.construct .mainmenu-container ul > li > ul, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        border-color: #134dba;
+    }
+
+    .mainmenu-container ul > li > ul {
+        background: #ffffff;
+        border-top: 2px solid #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+        header nav.mainmenu-container ul > li > ul > li > a :hover {
+            border-bottom: 1px solid #134dba;
+            color: #134dba;
+        }
+</style>
+
+
+<style>
+    #our-team-construct .single-construct-member .content:before {
+        background: #134dba;
+    }
+
+    footer.construct .widget .our-services li a {
+        color: #ffffff;
+        border-bottom: 1px solid #ffffff;
+    }
+
+        footer.construct .widget .our-services li a i:hover {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+    footer.construct .widget p, footer.construct .widget .popular-post li a h5, footer.construct .widget .contact-info li {
+        color: #ffffff;
+    }
+
+    #topbar.construct {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy0 .mainmenu-container > ul > li > a:hover {
+        color: #FFFFFF;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #ffffff;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #134dba;
+    }
+
+    #topbar.construct .contact-info ul li a {
+        color: #134dba;
+    }
+
+        #topbar.construct .contact-info ul li a:hover {
+            color: #134dba;
+        }
+
+    header.construct.header-curvy0 .logo:before {
+        background-color: #134dba !important;
+    }
+
+    .single-construction-welcome h2:after {
+        background: #134dba !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h2 {
+        color: #ffffff !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h3 {
+        color: #ffffff !important;
+    }
+
+    .section-title h1:before {
+        background: #134dba !important;
+    }
+
+    .service-tab-title ul li:hover, .service-tab-title ul li.active {
+        color: #134dba;
+    }
+
+        .service-tab-title ul li.active:before {
+            background: #134dba;
+        }
+
+    footer.construct .widget h3 {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    #bottom-bar.construct .container p {
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header.construct.header-curvy0 .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header.construct .mainmenu-container > ul > li.current > a, header.construct .mainmenu-container ul li a:hover, header.construct .mainmenu-container ul > li.dropdown:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:after, header.construct nav.mainmenu-container ul > li > ul > li > a:hover, header.construct nav.mainmenu-container ul > li > ul > li > a:hover:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:hover:after, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        color: #134dba;
+    }
+
+    .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header.construct.header-curvy0 {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy0 {
+        background: #fff;
+        border-top: 1px solid #134dba;
+        border-bottom: 1px solid #134dba;
+    }
+
+        header.construct.header-curvy0 .mainmenu-container > ul > li > a {
+            color: #134dba;
+        }
+
+            header.construct.header-curvy0 .mainmenu-container > ul > li > a:hover {
+                color: #3688be;
+            }
+
+        header.construct.header-curvy0 .mainmenu-container ul > li.dropdown:hover {
+            color: #3688be;
+        }
+
+    header.construct .mainmenu-container ul > li > ul, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        border-color: #134dba;
+    }
+
+    .mainmenu-container ul > li > ul {
+        background: #ffffff;
+        border-top: 2px solid #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+        header nav.mainmenu-container ul > li > ul > li > a :hover {
+            border-bottom: 1px solid #134dba;
+            color: #134dba;
+        }
+
+    #testimonials-construct-home .single-testimonial-construct h3 {
+        background: #134dba;
+    }
+</style>
+
+
+
+cury1
+<style>
+    #our-team-construct .single-construct-member .content:before {
+        background: #134dba;
+    }
+
+    footer.construct .widget .our-services li a {
+        color: #ffffff;
+        border-bottom: 1px solid #ffffff;
+    }
+
+        footer.construct .widget .our-services li a i:hover {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+    footer.construct .widget p, footer.construct .widget .popular-post li a h5, footer.construct .widget .contact-info li {
+        color: #ffffff;
+    }
+
+    #topbar.construct {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy1 .mainmenu-container > ul > li > a:hover {
+        color: #FFFFFF;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #ffffff;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #134dba;
+    }
+
+    #topbar.construct .contact-info ul li a {
+        color: #134dba;
+    }
+
+        #topbar.construct .contact-info ul li a:hover {
+            color: #134dba;
+        }
+
+    header.construct.header-curvy1 .logo:before {
+        background-color: #134dba !important;
+    }
+
+    .single-construction-welcome h2:after {
+        background: #134dba !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h2 {
+        color: #ffffff !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h3 {
+        color: #ffffff !important;
+    }
+
+    .section-title h1:before {
+        background: #134dba !important;
+    }
+
+    .service-tab-title ul li:hover, .service-tab-title ul li.active {
+        color: #134dba;
+    }
+
+        .service-tab-title ul li.active:before {
+            background: #134dba;
+        }
+
+    footer.construct .widget h3 {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    #bottom-bar.construct .container p {
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header.construct.header-curvy1 .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header.construct .mainmenu-container > ul > li.current > a, header.construct .mainmenu-container ul li a:hover, header.construct .mainmenu-container ul > li.dropdown:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:after, header.construct nav.mainmenu-container ul > li > ul > li > a:hover, header.construct nav.mainmenu-container ul > li > ul > li > a:hover:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:hover:after, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        color: #134dba;
+    }
+
+    .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header.construct.header-curvy1 {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy1 {
+        background: #fff;
+        border-top: 1px solid #134dba;
+        border-bottom: 1px solid #134dba;
+    }
+
+        header.construct.header-curvy1 .mainmenu-container > ul > li > a {
+            color: #134dba;
+        }
+
+            header.construct.header-curvy1 .mainmenu-container > ul > li > a:hover {
+                color: #3688be;
+            }
+
+        header.construct.header-curvy1 .mainmenu-container ul > li.dropdown:hover {
+            color: #3688be;
+        }
+
+    header.construct .mainmenu-container ul > li > ul, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        border-color: #134dba;
+    }
+
+    .mainmenu-container ul > li > ul {
+        background: #ffffff;
+        border-top: 2px solid #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+        header nav.mainmenu-container ul > li > ul > li > a :hover {
+            border-bottom: 1px solid #134dba;
+            color: #134dba;
+        }
+
+    #testimonials-construct-home .single-testimonial-construct h3 {
+        background: #134dba;
+    }
+</style>
+
+
+
+cury2
+<style>
+    #our-team-construct .single-construct-member .content:before {
+        background: #134dba;
+    }
+
+    footer.construct .widget .our-services li a {
+        color: #ffffff;
+        border-bottom: 1px solid #ffffff;
+    }
+
+        footer.construct .widget .our-services li a i:hover {
+            color: #ffffff;
+            border-bottom: 1px solid #ffffff;
+        }
+
+    footer.construct .widget p, footer.construct .widget .popular-post li a h5, footer.construct .widget .contact-info li {
+        color: #ffffff;
+    }
+
+    #topbar.construct {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy2 .mainmenu-container > ul > li > a:hover {
+        color: #FFFFFF;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #ffffff;
+    }
+
+    #topbar.construct .contact-info ul li a i {
+        color: #134dba;
+    }
+
+    #topbar.construct .contact-info ul li a {
+        color: #134dba;
+    }
+
+        #topbar.construct .contact-info ul li a:hover {
+            color: #134dba;
+        }
+
+    header.construct.header-curvy2 .logo:before {
+        background-color: #134dba !important;
+    }
+
+    .single-construction-welcome h2:after {
+        background: #134dba !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h2 {
+        color: #ffffff !important;
+    }
+
+    #welcome-to-construct .col-lg-7 h3 {
+        color: #ffffff !important;
+    }
+
+    .section-title h1:before {
+        background: #134dba !important;
+    }
+
+    .service-tab-title ul li:hover, .service-tab-title ul li.active {
+        color: #134dba;
+    }
+
+        .service-tab-title ul li.active:before {
+            background: #134dba;
+        }
+
+    footer.construct .widget h3 {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:before {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    footer.construct .widget .our-services li a:hover {
+        color: #ffffff;
+    }
+
+    #bottom-bar.construct .container p {
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+    header.construct.header-curvy2 .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header.construct .mainmenu-container > ul > li.current > a, header.construct .mainmenu-container ul li a:hover, header.construct .mainmenu-container ul > li.dropdown:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:after, header.construct nav.mainmenu-container ul > li > ul > li > a:hover, header.construct nav.mainmenu-container ul > li > ul > li > a:hover:after, header.construct .mainmenu-container ul > li > ul > li.dropdown:hover:after, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        color: #134dba;
+    }
+
+    .mainmenu-container ul > li.dropdown:after {
+        color: #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header.construct.header-curvy2 {
+        background: #ffffff !important;
+    }
+
+    header.construct.header-curvy2 {
+        background: #fff;
+        border-top: 1px solid #134dba;
+        border-bottom: 1px solid #134dba;
+    }
+
+        header.construct.header-curvy2 .mainmenu-container > ul > li > a {
+            color: #134dba;
+        }
+
+            header.construct.header-curvy2 .mainmenu-container > ul > li > a:hover {
+                color: #3688be;
+            }
+
+        header.construct.header-curvy2 .mainmenu-container ul > li.dropdown:hover {
+            color: #3688be;
+        }
+
+    header.construct .mainmenu-container ul > li > ul, header.construct .mainmenu-container ul li.top-icons:hover a i {
+        border-color: #134dba;
+    }
+
+    .mainmenu-container ul > li > ul {
+        background: #ffffff;
+        border-top: 2px solid #134dba;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a:hover {
+        border-bottom: 1px solid #134dba;
+        color: #ffffff;
+    }
+
+    header nav.mainmenu-container ul > li > ul > li > a {
+        border-bottom: 1px solid #134dba;
+        color: #134dba;
+    }
+
+        header nav.mainmenu-container ul > li > ul > li > a :hover {
+            border-bottom: 1px solid #134dba;
+            color: #134dba;
+        }
+
+    #testimonials-construct-home .single-testimonial-construct h3 {
+        background: #134dba;
+    }
+</style>

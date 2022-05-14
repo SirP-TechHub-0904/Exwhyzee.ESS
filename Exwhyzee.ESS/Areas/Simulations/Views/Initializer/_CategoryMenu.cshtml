@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.SimulationCategory>
+
+@foreach (var m in Model)
+{
+    if (m.Title.ToLower() == "none")
+    {
+        @Html.Action("_SimulationSubMenu", "Initializer", new { area = "Simulations", id = m.Id })
+
+    }
+    else
+    {
+        <li class="treeview">
+            <a href="#">
+                <i class="fa fa-building-o"></i> <span> @m.Title</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                @Html.Action("_SimulationSubMenu", "Initializer", new { area = "Simulations", id = m.Id })
+
+            </ul>
+        </li>
+    }
+
+}

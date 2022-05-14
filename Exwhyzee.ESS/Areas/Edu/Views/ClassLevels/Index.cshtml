@@ -1,0 +1,101 @@
+﻿@model PagedList.IPagedList<Exwhyzee.ESS.Models.Entities.ClassLevel>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> Class List</h3>
+
+                <div class="box-tools">
+                    @Html.ActionLink("New Class", "Create", null, new { @class = "btn btn-primary", style = "padding: 7px;" })
+                </div>
+                <br />
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        @using (Html.BeginForm("Index", "ClassLevels", null, FormMethod.Post, new { @class = "" }))
+                        {
+
+                            <div class="input-group" style="margin-left:10px;">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                                <!-- /btn-group -->
+                                <input type="text" name="SearchString" class="form-control" value="@ViewBag.CurrentFilter" placeholder="Search...">
+                            </div>
+
+                        }
+
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover" border="1">
+
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Type
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SchoolType)
+                    </td>
+
+
+                    <td>
+
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                Action
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+
+                                <li class="text-color-warning">@Html.ActionLink("Edit", "Edit", new { id = item.Id }, null)</li>
+                                <li class="text-color-success">@Html.ActionLink("Details", "Details", new { id = item.Id }, null)</li>
+
+                                <li class="text-color-danger">@Html.ActionLink("Delete", "Delete", new { id = item.Id }, null)</li>
+
+                            </ul>
+                        </div>
+
+                    </td>
+                </tr>
+                    }
+
+                </table>
+                <div class="container text-center page" style="margin-left:auto;margin-right:auto;">
+
+                    <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+                    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>

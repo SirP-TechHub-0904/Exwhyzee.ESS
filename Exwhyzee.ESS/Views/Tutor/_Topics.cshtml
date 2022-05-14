@@ -1,0 +1,338 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.Topic>
+
+<section class="popular-posts-block container">
+
+    <header class="popular-posts-head">
+        <h6 class="popular-head-heading">KG/Nursery Class Lessons</h6>
+    </header>
+    <style>
+        .owl-slider .item {
+            border: 1px solid #c8c5c5 !important;
+        }
+    </style>
+
+    @if (ViewBag.kgc > 0)
+    {
+        <div class="owl-slider">
+            <div id="carousel" class="owl-carousel">
+
+                @foreach (var item in ViewBag.kg)
+                {
+
+                    <div class="item">
+                        <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                            <div class="">
+                                <article class="popular-post">
+
+                                    <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                                        <div class="aligncenter">
+                                            <img src="~/Uploads/@item.VideoCover" />
+                                        </div>
+                                    </a>
+
+                                    <div>
+
+                                    </div>
+                                    <h3 class="post-heading" style=""><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">@item.Title</a></h3>
+                                    <div class="post-author" style="">
+
+
+                                        <h4 class="author-heading"><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">SUBJECT: @item.Subject.Name</a></h4>
+                                    </div>
+                                    <div class="post-author" style="">
+
+
+
+                                    </div>
+                                    <footer class="post-foot gutter-reset">
+                                        <ul class="list-unstyled post-statuses-list">
+                                            <li>
+                                                <a href="#" tabindex="0">
+
+                                                    <strong class="text fw-normal">@item.Views</strong>
+                                                    <span class="no-shrink">Views</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" tabindex="0">
+                                                    <span class="fa icn no-shrink fa-comments"><span class="sr-only">comments</span></span>
+                                                    <strong class="text fw-normal">0@*@item.TopicReview.Count()*@</strong>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="star-rating list-unstyled">
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                        </ul>
+                                    </footer>
+                                </article>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                }
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <h4 class="text-center">No Record Found...</h4>
+    }
+
+
+
+    <header class="popular-posts-head">
+        <h6 class="popular-head-heading">Primary Class Lessons</h6>
+    </header>
+
+
+    @if (ViewBag.pric > 0)
+    {
+        <div class="owl-slider">
+            <div id="carousel2" class="owl-carousel">
+
+                @foreach (var item in ViewBag.pri)
+                {
+
+                    <div class="item">
+                        <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                            <div class="">
+                                <article class="popular-post">
+
+                                    <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                                        <div class="aligncenter">
+                                            <img src="~/Uploads/@item.VideoCover" />
+                                        </div>
+                                    </a>
+
+                                    <div>
+
+                                    </div>
+                                    <h3 class="post-heading" style=""><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">@item.Title</a></h3>
+                                    <div class="post-author" style="">
+
+
+                                        <h4 class="author-heading"><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">SUBJECT: @item.Subject.Name</a></h4>
+                                    </div>
+                                    <div class="post-author" style="">
+
+
+
+                                    </div>
+                                    <footer class="post-foot gutter-reset">
+                                        <ul class="list-unstyled post-statuses-list">
+                                            <li>
+                                                <a href="#" tabindex="0">
+
+                                                    <strong class="text fw-normal">@item.Views</strong>
+                                                    <span class="no-shrink">Views</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" tabindex="0">
+                                                    <span class="fa icn no-shrink fa-comments"><span class="sr-only">comments</span></span>
+                                                    <strong class="text fw-normal">@*@item.TopicReview.Count()*@</strong>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="star-rating list-unstyled">
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                        </ul>
+                                    </footer>
+                                </article>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                }
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <h4 class="text-center">No Record Found...</h4>
+    }
+
+
+
+
+    <header class="popular-posts-head">
+        <h4 class="popular-head-heading">Secondary Class Lessons</h4>
+    </header>
+    <div class="">
+        @if (ViewBag.secc > 0)
+        {
+            <div class="owl-slider">
+                <div id="carousel3" class="owl-carousel">
+
+                    @foreach (var item in ViewBag.sec)
+                    {
+                        <div class="item">
+                            <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                                <div class="">
+                                    <article class="popular-post">
+
+                                        <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                                            <div class="aligncenter">
+                                                <img src="~/Uploads/@item.VideoCover" />
+                                            </div>
+                                        </a>
+
+                                        <div>
+
+                                        </div>
+                                        <h3 class="post-heading" style=""><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">@item.Title</a></h3>
+                                        <div class="post-author" style="">
+
+
+                                            <h4 class="author-heading"><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">SUBJECT: @item.Subject.Name</a></h4>
+                                        </div>
+                                        <div class="post-author" style="">
+
+
+
+                                        </div>
+                                        <footer class="post-foot gutter-reset">
+                                            <ul class="list-unstyled post-statuses-list">
+                                                <li>
+                                                    <a href="#" tabindex="0">
+
+                                                        <strong class="text fw-normal">@item.Views</strong>
+                                                        <span class="no-shrink">Views</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" tabindex="0">
+                                                        <span class="fa icn no-shrink fa-comments"><span class="sr-only">comments</span></span>
+                                                        <strong class="text fw-normal">@*@item.TopicReview.Count()*@</strong>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="star-rating list-unstyled">
+                                                <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                                <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                                <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                                <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                                <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            </ul>
+                                        </footer>
+                                    </article>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        }
+        else
+        {
+            <h4 class="text-center">No Record Found...</h4>
+        }
+
+
+    </div>
+
+
+
+
+    <header class="popular-posts-head">
+        <h6 class="popular-head-heading">Motivational Talks</h6>
+    </header>
+    <style>
+        .owl-slider .item {
+            border: 1px solid #c8c5c5 !important;
+        }
+    </style>
+
+    @if (ViewBag.motivc > 0)
+    {
+        <div class="owl-slider">
+            <div id="carouselm" class="owl-carousel">
+
+                @foreach (var item in ViewBag.motiv)
+                {
+
+                    <div class="item">
+                        <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                            <div class="">
+                                <article class="popular-post">
+                                    <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+                                        <div class="aligncenter">
+                                            <img src="~/Uploads/@item.VideoCover" />
+                                        </div>
+                                    </a>
+
+                                    <div>
+
+                                    </div>
+                                    <h3 class="post-heading" style=""><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">@item.Title</a></h3>
+                                    <div class="post-author" style="">
+
+
+                                        <h4 class="author-heading"><a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })" tabindex="0">SUBJECT: @item.Subject.Name</a></h4>
+                                    </div>
+                                    <div class="post-author" style="">
+
+
+
+                                    </div>
+                                    <footer class="post-foot gutter-reset">
+                                        <ul class="list-unstyled post-statuses-list">
+                                            <li>
+                                                <a href="#" tabindex="0">
+
+                                                    <strong class="text fw-normal">@item.Views</strong>
+                                                    <span class="no-shrink">Views</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#" tabindex="0">
+                                                    <span class="fa icn no-shrink fa-comments"><span class="sr-only">comments</span></span>
+                                                    <strong class="text fw-normal">0@*@item.TopicReview.Count()*@</strong>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <ul class="star-rating list-unstyled">
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                            <li><span class="fa fa-star"><span class="sr-only">star</span></span></li>
+                                        </ul>
+                                    </footer>
+                                </article>
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                }
+            </div>
+        </div>
+
+
+    }
+    else
+    {
+        <h4 class="text-center">No Record Found...</h4>
+    }
+
+
+</section>

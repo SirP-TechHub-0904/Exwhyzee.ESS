@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.SchoolRanking>
+
+@{
+    ViewBag.Title = "Listing";
+}
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/img/for-web1.jpg);">
+        <div class="container holder">
+            <div class="align">
+                <h3 style="">List of Schools in Nigeria</h3>
+            </div>
+        </div>
+    </header>
+    <!-- breadcrumb nav -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Education</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- two columns -->
+    <div id="two-columns" class="container">
+        <h1>List of Schools that Operates on the Digital Age.</h1>
+        <div class="row">
+            <!-- content -->
+            <article id="content" class="col-xs-12 col-md-9">
+
+                <table class="table table-hover" border="0">
+
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>
+                                Name of School
+                            </th>
+                            <th>
+                                Website
+                            </th>
+                            <th>State</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sno = 0;
+                        }
+                        @foreach (var item in Model.Where(x=>x.Name != null).OrderBy(x=>x.Name))
+                        {
+                            <tr>
+                                <td>
+                                    @{ sno++; }
+                                    @sno
+                                </td>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @if (item.Website != null)
+                                    {
+                                        if (item.Website.Contains("http"))
+                                        {
+                                        <a href="@item.Website" target="_blank">
+                                            @item.Website
+                                        </a>
+                                        }
+                                        else
+                                        {
+                                        <a href="http://@item.Website" target="_blank">
+                                            @item.Website
+                                        </a>
+                                        }
+                                    }
+                                </td>
+                                <td>
+                                    @item.State
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </article>
+            <!-- sidebar -->
+
+            @Html.Action("_TopicsListing", "Iskools")
+        </div>
+    </div>
+</main>

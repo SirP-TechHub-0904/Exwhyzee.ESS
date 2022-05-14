@@ -1,0 +1,274 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<main id="main">
+    <!-- intro block -->
+    <div class="">
+        <link rel="stylesheet" href="~/Content/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+
+        <link rel="stylesheet" href="~/Content/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="~/Content/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="~/Content/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="~/Content/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="~/Content/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+        <link rel="stylesheet" href="~/Content/nivo-slider/demo/style.css" type="text/css" media="screen" />
+
+        <section class="slider-container">
+            <div class="slider-wrapper theme-default" style="width:99% !important;">
+
+                <div id="slider" class="nivoSlider" style="margin-bottom:0px;">
+
+
+                    @Html.Action("_Slider", "Iskools")
+
+                </div>
+
+            </div>
+        </section>
+
+        <style>
+            .mobile-d .features-aside .col {
+                padding: 12px 7px;
+            }
+
+            .mobile-d .features-aside .icn-wrap {
+                margin-right: 15px;
+                width: 30px;
+            }
+
+            .mobile-d .features-aside .features-aside-heading {
+                font-size: 15px;
+                line-height: 1.0;
+            }
+        </style>
+
+        @if (Request.Browser.IsMobileDevice == true)
+        {
+            <div class="mobile-d container" style="margin-top:7px;">
+                <!-- features aside -->
+                <aside class="features-aside">
+                    <a href="http://iskools.com/tutor/AskQuestion" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <i class="fa fa-question" style="font-size:50px;"></i>
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Click to ask your Questions and get Answers in a jiffy. </h2>
+                        </div>
+                    </a>
+                    <a href="http://iskools.com/tutor/classindex" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <img src="~/Content/iskool/icon02.svg" width="43" height="39" alt="computer">
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Learn Subjects/Courses Onlines</h2>
+                        </div>
+                    </a>
+                    <a href="@Url.Action("Index", "Ebooks", new { area = "ELibrary" })" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <img src="~/Content/iskool/icon03.svg" width="43" height="39" alt="computer">
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Click to Read Books/Textbook Online</h2>
+                        </div>
+                    </a>
+                    <a href="@Url.Action("CreateAccount", "Auth", new { area = "" })" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <img src="~/Content/iskool/icon02.svg" width="43" height="39" alt="computer">
+
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Join the Teachers Volunteer Program</h2>
+                        </div>
+                    </a>
+                </aside>
+            </div>
+
+        }
+        else
+        {
+
+            <div class="container" style="margin-top:7px;">
+                <!-- features aside -->
+                <aside class="features-aside">
+                    <a href="http://iskools.com/tutor/AskQuestion" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <i class="fa fa-question" style="font-size:50px;"></i>
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Click to ask your Questions and get Answers in a jiffy. </h2>
+                        </div>
+                    </a>
+                    <a href="http://iskools.com/tutor/classindex" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <img src="~/Content/iskool/icon02.svg" width="43" height="39" alt="computer">
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Learn Subjects/Courses Onlines</h2>
+                        </div>
+                    </a>
+                    <a href="@Url.Action("Index", "Ebooks", new { area = "ELibrary" })" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <img src="~/Content/iskool/icon03.svg" width="43" height="39" alt="computer">
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Click to Read Books/Textbook Online</h2>
+                        </div>
+                    </a>
+                    <a href="@Url.Action("CreateAccount", "Auth", new { area = "" })" class="col">
+                        <span class="icn-wrap text-center no-shrink">
+                            <img src="~/Content/iskool/icon02.svg" width="43" height="39" alt="computer">
+
+                        </span>
+                        <div class="description">
+                            <h2 class="features-aside-heading">Join the Teachers Volunteer Program</h2>
+                        </div>
+                    </a>
+                </aside>
+            </div>
+        }
+    </div>
+
+
+    <style>
+        .owl-nav button {
+            position: absolute;
+            top: 50%;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+            .owl-nav button.owl-prev {
+                left: 0;
+            }
+
+            .owl-nav button.owl-next {
+                right: 0;
+            }
+
+        .owl-dots {
+            text-align: center;
+            padding-top: 15px;
+        }
+
+            .owl-dots button.owl-dot {
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                display: inline-block;
+                background: #ccc;
+                margin: 0 3px;
+            }
+
+                .owl-dots button.owl-dot.active {
+                    background-color: #000;
+                }
+
+                .owl-dots button.owl-dot:focus {
+                    outline: none;
+                }
+
+        .owl-nav button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.38) !important;
+        }
+
+
+        button span {
+            font-size: 40px;
+            font-weight: 900;
+            position: relative;
+            color: #336adb;
+            top: -70px;
+        }
+
+        .owl-nav button:focus {
+            outline: none;
+        }
+
+        .owl-dots {
+            padding-top: 0px;
+            margin-top: 4px;
+        }
+
+            .owl-dots button.owl-dot {
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                display: inline-block;
+                background: #336adb;
+                margin: 0 3px;
+            }
+    </style>
+
+
+    <!-- popular posts block -->
+    @Html.Action("_Topics", "Tutor")
+    <!-- counter aside -->
+
+    <aside class="bg-cover counter-aside" style="background-image: url('');">
+
+        <a href="@Url.Action("GetStarted", "Tutor")">
+            <img src="~/Content/img/windata.jpg" class="img-responsive" style="width:100% !important;" />
+        </a> 
+    </aside>
+
+
+    <!-- upcoming events block -->
+    @Html.Action("_Events", "Tutor")
+
+    <section class="testimonials-block text-center bg-gray" style="background-image: url('../../Content/main-iskool/bg-pattern01.png');">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+                    <h2>What People Say</h2>
+                    <!-- testimonail slider -->
+
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <h5 class="text-center">Wao its very nice. will keep my kids very busy</h5>
+                            </div>
+
+                            <div class="item">
+                                <h5 class="text-center">Learning continue... Thank you Exwhyzee</h5>
+                            </div>
+
+                            <div class="item">
+                                <h5 class="text-center">
+                                    This is exactly what i want for my kids
+                                </h5>
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- news block -->
+    <!-- subscription aside block -->
+
+</main>

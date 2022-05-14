@@ -1,0 +1,12 @@
+﻿@{
+
+    if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else if (User.IsInRole("Teacher") || User.IsInRole("Volunteer"))
+    {
+        Layout = "~/Views/Shared/_Dashboard.cshtml";
+    }
+
+}

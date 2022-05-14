@@ -1,0 +1,134 @@
+﻿@model Exwhyzee.ESS.Models.Entities.ApiSessionDetails
+
+@{
+    ViewBag.Title = "SessionsDetails";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Session Details for @ViewBag.session (@ViewBag.schoolname)</h3>
+
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>@TempData["error"]</strong>
+                    </div>
+                }
+            </div>
+
+            <div class="box-body">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SchoolCurrentPrincipal)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SchoolCurrentPrincipal)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ClassCount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ClassCount)
+                    </dd>
+
+
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.EnrolStudentsCount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.EnrolStudentsCount)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UnEnrolStudentsCount)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UnEnrolStudentsCount)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Usedcard)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Usedcard)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TotalStaff)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TotalStaff)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CurrentSession)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CurrentSession)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Session)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Session)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Term)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Term)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TotalResults)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TotalResults)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TotalCummulativeResults)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TotalCummulativeResults)
+                    </dd>
+
+                </dl>
+            </div>
+        
+
+
+        <div class="box-footer">
+           
+            <a href="javascript: history.back()" class="btn btn-default">Cancel</a>
+        </div>
+
+
+    </div>
+
+</div>
+<div class="col-md-3"></div>
+
+    </div>
+

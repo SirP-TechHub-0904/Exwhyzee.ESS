@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.Post>
+
+@foreach (var item in Model)
+{
+
+
+
+<li>
+    <a href="@Url.Action("UpdateDetails", "Tutor", new { id = item.Id, title = item.Title })">
+        <div class="alignleft">
+            <img src="~/Uploads/@item.PostImage" alt="image description">
+        </div>
+        <div class="description-wrap">
+            <h4>@item.Title</h4>
+            <strong class="price text-primary element-block font-lato text-uppercase">Latest</strong>
+        </div>
+    </a>
+</li>
+
+}

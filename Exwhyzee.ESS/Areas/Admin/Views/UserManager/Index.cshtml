@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.ApplicationUser>
+@using Exwhyzee.ESS.Helper
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> User Management</h3>
+
+                <div class="box-tools">
+                   @* @Html.ActionLink("New Class", "NewClass", null, new { @class = "btn btn-primary", style = "padding: 7px;" })*@
+                </div>
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        @TempData["success"]
+                    </div>
+                }
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover" border="1">
+
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+
+                            <th>Email</th>
+                            <th>Phone</th>
+                            @if (User.IsInRole("SuperAdmin"))
+                            {
+                                foreach (var item in ViewBag.Roles)
+                                {
+                                    <th>@item.Name.ToUpper()</th>
+                                }
+                            }
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sno = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @{ sno++; }
+                                @sno
+                            </td>
+                          
+                            <td>
+                                <a href="http://iskools.com/Dashboard/Account/MyCV?email=@item.Email" target="_blank">
+                                    @item.Email
+                                </a>
+                               
+                            </td>
+                            <td>@item.PhoneNumber</td>
+                           @if (User.IsInRole("SuperAdmin"))
+                           {
+                            foreach (var role in ViewBag.Roles)
+                            {
+                                <td>
+                                    @using (Html.BeginForm("UserToRole", "UserManager"))
+                                    {
+                                        <input type="hidden" value="@item.Id" name="userId" />
+                                        <input type="hidden" value="@role.Name" name="rolename" />
+                                        <input type="checkbox" class="icheckbox_minimal-blue" name="ischecked" onclick="this.form.submit();" value="true" checked="@IskoolHelper.IsUserInRole(item.Id, role.Name)" />
+
+                                    }
+                                </td>
+                            }
+                           }
+                            <td>
+
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Action
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li>
+
+                                            @Html.ActionLink("Update Review", "AdminReview", new { id = item.Id }, new { @class = "" })
+
+                                        </li>
+                                        <li>
+
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "" })
+
+                                        </li>
+
+                                        
+                                    </ul>
+                                </div>
+
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+

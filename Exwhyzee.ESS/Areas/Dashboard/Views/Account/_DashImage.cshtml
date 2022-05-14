@@ -1,0 +1,32 @@
+﻿@model Exwhyzee.ESS.Models.UserProfile.UserProfileModel
+
+<div class="user-panel">
+    <div class="pull-left image">
+
+       
+            @if (Model.PhotoUrl != null)
+            {
+
+                <img src="data:image/jpg;base64,@(Convert.ToBase64String(Model.PhotoUrl))" class="img-circle img-responsive" />
+
+            }
+            else
+            {
+                <img src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.jpg" class="img-circle img-responsive" />
+            }
+
+        </div>
+    <div class="pull-left info">
+        <p>
+            @User.Identity.Name
+
+        </p>
+
+        <p style="text-wrap:normal;">
+
+            <span>(Active User)</span>
+
+        </p>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.DataImages>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="box-body table-responsive no-padding">
+    <table id="example1" class="table table-bordered table-hover" border="1">
+
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageLink)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/Uploads/@item.ImageLink" style="height:70px;" /><br />
+                        @item.ImageLink
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<div class="box-body table-responsive no-padding">
+    <table id="example11" class="table table-bordered table-hover" border="1">
+
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageLink)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var slider in (IEnumerable<string>)ViewBag.slides)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Content(slider)" class="img-responsive" alt="" height="70" style="height:70px !important;" /><br />
+                        @slider
+                    </td>
+                    <td>
+
+                        @Html.ActionLink("RemoveFile", "RemoveFile", new { name = slider })
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example11').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}

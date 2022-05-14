@@ -1,0 +1,145 @@
+﻿@model Exwhyzee.ESS.Models.Entities.Question
+
+@{
+    ViewBag.Title = "AskQuestion";
+}
+
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/img/for-web1.jpg);">
+        <div class="container holder">
+            <div class="align">
+                <h1>Ask Your Assignment Questions, project, term paper</h1>
+            </div>
+        </div>
+    </header>
+    <!-- breadcrumb nav -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">Ask Any Question</li>
+            </ol>
+        </div>
+    </nav>
+    <!-- user log block -->
+    <section class="container user-log-block">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <!-- user log form -->
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="user-log-form">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control element-block" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Full Name", htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control element-block" } })
+                                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.Label("Phone Number", htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control element-block" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("School Name", htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                @Html.EditorFor(model => model.SchoolName, new { htmlAttributes = new { @class = "form-control element-block" } })
+                                @Html.ValidationMessageFor(model => model.SchoolName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                <select class="form-control" name="State">
+                                    <option value="">Select a State</option>
+                                    <option value="ABIA">ABIA</option>
+                                    <option value="ADAMAWA">ADAMAWA</option>
+                                    <option value="AKWA IBOM">AKWA IBOM</option>
+                                    <option value="ANAMBRA">ANAMBRA</option>
+                                    <option value="BAUCHI">BAUCHI</option>
+                                    <option value="BAYELSA">BAYELSA</option>
+                                    <option value="BENUE">BENUE</option>
+                                    <option value="BORNU">BORNU</option>
+                                    <option value="CROSS RIVER">CROSS RIVER</option>
+                                    <option value="DELTA">DELTA</option>
+                                    <option value="EBONYI">EBONYI</option>
+                                    <option value="EDO">EDO</option>
+                                    <option value="EKITI">EKITI</option>
+                                    <option value="ENUGU">ENUGU</option>
+                                    <option value="FEDERAL CAPITAL TERRITORY">FEDERAL CAPITAL TERRITORY</option>
+                                    <option value="GOMBE">GOMBE</option>
+                                    <option value="IMO">IMO</option>
+                                    <option value="JIGAWA">JIGAWA</option>
+                                    <option value="KADUNA">KADUNA</option>
+                                    <option value="KANO">KANO</option>
+                                    <option value="KATSINA">KATSINA</option>
+                                    <option value="KEBBI">KEBBI</option>
+                                    <option value="KOGI">KOGI</option>
+                                    <option value="KWARA">KWARA</option>
+                                    <option value="LAGOS">LAGOS</option>
+                                    <option value="NASARAWA">NASARAWA</option>
+                                    <option value="NIGER">NIGER</option>
+                                    <option value="OGU">OGU</option>
+                                    <option value="ONDO">ONDO</option>
+                                    <option value="OYO">OYO</option>
+                                    <option value="PLATEAU">PLATEAU</option>
+                                    <option value="RIVERS ">RIVERS </option>
+                                    <option value="SOKOTO">SOKOTO</option>
+                                    <option value="TARABA">TARABA</option>
+                                    <option value="YOBE">YOBE</option>
+                                    <option value="ZAMFARA">ZAMFARA</option>
+                                </select>                                    
+                                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.QuestionContent, htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                @* @Html.EditorFor(model => model.QuestionContent, new { htmlAttributes = new { @ } })*@
+                                <textarea class="form-control element-block" name="QuestionContent"></textarea>
+                                @Html.ValidationMessageFor(model => model.QuestionContent, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="btns-wrap">
+                            <div class="wrap">
+
+                                <button type="submit" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Submit Question</button>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </section>
+</main>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/ELibrary/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .full-screen-preview__frame {
+        width: 100%;
+        background-color: white;
+    }
+</style>
+
+<iframe class="full-screen-preview__frame" src="@Url.Action("IFrameView", "Ebooks", new { area = "ELibrary" })" name="preview-frame" frameborder="0" noresize="noresize" data-view="fullScreenPreview" allow="geolocation 'self'; autoplay 'self'" style="height: 3000px;overflow-y:hidden;"></iframe>
+

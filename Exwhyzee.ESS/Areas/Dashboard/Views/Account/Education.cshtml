@@ -1,0 +1,157 @@
+﻿@model Exwhyzee.ESS.Models.ProfileEducationHistory.EducationHistoryModel
+
+
+    <div class="box box-primary" id="Education">
+        <div class="box-header with-border">
+            <h3 class="box-title">Update Education</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box-body box-profile" style="border:1px solid #3c8dbc;">
+                        @foreach (var item in ViewBag.list)
+                        {
+
+                            @*<form id="ListExperienceModelForm" asp-page-handler="ExperienceDelete" enctype="multipart/form-data" method="post">
+                                <input type="hidden" name="experienceModelId" value="@item.Id" />
+
+                            </form>*@
+
+                        <div class="alert left_col alert-dismissible fade in" role="alert" style="padding:5px;margin-bottom:1px;border-radius:0px;padding-right:20px;background-color:#3c8dbc;color:#ffffff !important;">
+
+                            @*<form asp-page-handler="ExperienceDelete" asp-route-id="@item.Id" method="post">
+            <button class="pull-right" style="font-weight:900;">X</button>
+        </form>*@
+
+                            <button class="pull-right" onclick="window.location.href = '@Url.Action("DeleteEducation", "Account", new { id = item.Id })';" style="font-weight:900;">X</button>
+                            <p>
+                                <strong>School:</strong> @item.SchoolAttended
+                                @if (item.IsCurrent == true)
+                                {
+                                    <span class="btn-sm btn-success">
+                                        Is Current
+                                    </span>
+                                }
+                                else
+                                {
+
+
+                                }
+
+
+
+                            </p>
+
+                            <p><strong>Course: </strong>@item.Course</p>
+
+                            <p><strong>Start - End Date:</strong> @item.StartDate - @item.EndDate</p>
+
+                            <p><strong>Grade:</strong> @item.Grade</p>
+                        </div>
+
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        @using (Html.BeginForm("Education", "Account", null, FormMethod.Post, new { id = "", @class = "", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+    <div class="box-body">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input type="hidden" name="UserProfileId" value="@ViewBag.id">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label">
+                        School
+                    </label>
+                    <div class="">
+                        <input type="text" name="SchoolAttended" required="required" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        Start Year
+                    </label>
+                    <div class="">
+                        <input type="text" name="StartDate" required="required" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label">
+                        End Year
+                    </label>
+                    <div class="">
+                        <input type="text" name="EndDate" required="required" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" class="flat" checked="checked"> Checked
+                    </label>
+                </div>
+            </div>
+        </div>
+
+                <div class="item form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Course
+                                </label>
+                                <div class="">
+                                    <textarea class="form-control" name="Course"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Grade
+                                </label>
+                                <div class="">
+                                    <textarea class="form-control" name="Grade"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+               
+        </div>
+
+
+    </div>
+            <!-- /.box-body -->
+            <div class="box-footer">
+                <div class="form-group">
+                    <div class="">
+
+                        <button id="submit" type="submit" class="btn btn-success">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            }
+        </div>
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

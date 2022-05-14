@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.Post>
+@using System.Text.RegularExpressions;
+@helper Truncate(string input, int lenght)
+{
+    if (input.Length <= lenght)
+    {
+        @Html.Raw(input)
+    }
+    else
+    {
+        @Html.Raw(input.Substring(0, input.IndexOf(" ", lenght)).ToString())
+    }
+}
+
+<style>
+    .card-img {
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .card-title {
+        margin-bottom: 0.3rem;
+    }
+
+    .cat {
+        display: inline-block;
+        margin-bottom: 1rem;
+    }
+
+    .fa-users {
+        margin-left: 1rem;
+    }
+
+    .card-footer {
+        font-size: 0.8rem;
+    }
+</style>
+
+<section class="upcoming-events-block container">
+    <header class="block-header" style="margin-bottom:5px;">
+        <div class="pull-left">
+            <h2 class="block-header-heading">Upcoming Events and News</h2>
+            <p>Recent and upcoming news and educational events listed here</p>
+        </div>
+        <a href="#" class="btn btn-default text-uppercase pull-right">View More</a>
+    </header>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                <a href="@Url.Action("UpdateDetails", "Tutor", new { id = item.Id, title = item.Title })">
+                    <div class="card" style="margin-bottom:10px;">
+                        <img class="card-img" src="~/Uploads/@item.PostImage" alt="" style="height:150px;">
+
+                        <div class="card-body">
+                            <h4 class="card-title" style="margin:0 0;font-size: 14px;min-height:45px;">@item.Title</h4>
+                            <small class="text-muted cat" style="margin-bottom:0px;">
+                                <i class="fa fa-clock text-info"></i> @item.DatePosted.ToString("ddd MM, yyyy")
+                                <i class="fa fa-users text-info"></i> by Iskools Admin
+                            </small>
+                            <p class="card-text" style="line-height: 1.42857143;"> @Truncate(item.PreviewContent, 130)</p>
+                            
+                        </div>
+                       
+                    </div>
+                    </a>
+</div>
+        }
+    </div>
+  
+
+</section>

@@ -1,0 +1,186 @@
+﻿
+@{
+    ViewBag.Title = "Qualification";
+}
+
+@model Exwhyzee.ESS.Models.Profile.TeacherEvaluation
+
+@if (Request.Browser.IsMobileDevice == true)
+{
+    <style>
+        .heading-banner .holder {
+            min-height: 121px;
+        }
+    </style>
+}
+else
+{
+    <style>
+        .heading-banner .holder {
+            min-height: 201px;
+        }
+    </style>
+}
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/main-iskool/tagi.jpg);">
+        <div class="container holder">
+            <div class="align" style="padding:10px 0;">
+                <h1 style="padding:10px;margin:0 10px;">Qualification</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- user log block -->
+    <section class="container user-log-block">
+        <div class="row">
+            <div class="col-xs-2 col-md-2"></div>
+            <div class="col-xs-8 col-md-8">
+                <!-- user log form -->
+                @using (Html.BeginForm("Qualification", "Auth", FormMethod.Post, new { @class = "", role = "", enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                <div class="user-log-form">
+                    <input type="hidden" name="Id" value="@ViewBag.Id" />
+                    <h1>Update Your Qualification</h1>
+
+                    <div class="form-group">
+                        Subject of Interest
+                        <div class="">
+
+                            <select name="Subject1" class="form-control">
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="English">English</option>
+                                <option value="Computer">Computer</option>
+                                <option value="Basic Science">Basic Science</option>
+                                <option value="Social Studies">Social Studies</option>
+                                <option value="Agricultural Science">Agricultural Science</option>
+                                <option value="Civic Education">Civic Education</option>
+                                <option value="Business Studies">Business Studies</option>
+                                <option value="Home Economics">Home Economics</option>
+                                <option value="Basic Technology">Basic Technology</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Government">Government</option>
+                                <option value="Literature-In-English">Literature-In-English</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        Subject of Interest
+                        <div class="">
+
+                            <select name="Subject2" class="form-control">
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="English">English</option>
+                                <option value="Computer">Computer</option>
+                                <option value="Basic Science">Basic Science</option>
+                                <option value="Social Studies">Social Studies</option>
+                                <option value="Agricultural Science">Agricultural Science</option>
+                                <option value="Civic Education">Civic Education</option>
+                                <option value="Business Studies">Business Studies</option>
+                                <option value="Home Economics">Home Economics</option>
+                                <option value="Basic Technology">Basic Technology</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Government">Government</option>
+                                <option value="Literature-In-English">Literature-In-English</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        Subject of Interest
+                        <div class="">
+
+                            <select name="Subject3" class="form-control">
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="English">English</option>
+                                <option value="Computer">Computer</option>
+                                <option value="Basic Science">Basic Science</option>
+                                <option value="Social Studies">Social Studies</option>
+                                <option value="Agricultural Science">Agricultural Science</option>
+                                <option value="Civic Education">Civic Education</option>
+                                <option value="Business Studies">Business Studies</option>
+                                <option value="Home Economics">Home Economics</option>
+                                <option value="Basic Technology">Basic Technology</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Commerce">Commerce</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Government">Government</option>
+                                <option value="Literature-In-English">Literature-In-English</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Qualification", new { @class = "control-label" })
+                        <div class="">
+                            <input type="text" name="Qualification" class="form-control" required="required" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Qualification Front", new { @class = "control-label" })
+                        <input type="file" class="form-control" id="upload" name="upload" style="margin-bottom:20px;" accept=".png,.jpg,.jpeg" />
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Qualification Back", new { @class = "control-label" })
+                        <input type="file" class="form-control" id="upload1" name="upload1" style="margin-bottom:20px;" accept=".png,.jpg,.jpeg" />
+
+                    </div>
+
+                    <div class="form-group">
+                        @Html.Label("Sample Youtube Video", new { @class = "control-label" })
+                        <div class="">
+                            <input type="text" name="YouTubeVideo" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="btns-wrap">
+                        <div class="wrap">
+
+                            <button type="submit" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Submit</button>
+                        </div>
+
+                    </div>
+                </div>
+                }
+            </div>
+            <div class="col-xs-2 col-md-2"></div>
+
+        </div>
+    </section>
+</main>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+}

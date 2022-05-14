@@ -1,0 +1,139 @@
+﻿@model PagedList.IPagedList<Exwhyzee.ESS.Models.Entities.Subject>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "SubjectIndex";
+}
+
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/img/tag.jpg);">
+        <div class="container holder">
+            <div class="align">
+                <h3 style="color:#ffffff;">Subject Listing</h3>
+            </div>
+        </div>
+    </header>
+    <!-- breadcrumb nav -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Subjects</a></li>
+
+            </ol>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="row" style="margin-top:15px">
+            <div class="col-md-9">
+                @using (Html.BeginForm("Teacher", "Iskools", null, FormMethod.Post, new { @class = "" }))
+                {
+
+                    <div class="input-group" style="">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                        <!-- /btn-group -->
+                        <input type="text" name="SearchString" class="form-control" value="@ViewBag.CurrentFilter" placeholder="Search...">
+                    </div>
+
+                }
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:15px;margin-bottom:10px;">
+
+            <div class="col-md-9" style="margin-bottom:5px;">
+                @foreach (var item in Model)
+                {
+                    <div class="card" style="margin-bottom:4px;">
+                        <div class="card-horizontal">
+                            @if (!Request.Browser.IsMobileDevice)
+                            {
+                                <div class="img-square-wrapper" style="">
+                                    <a href="@Url.Action("TopicIndex", "Tutor", new { id = item.Id })">
+
+                                        @if (item.CoverImage != null)
+                                        {
+                                            <img class="img-responsive" src="data:image/jpg;base64,@(Convert.ToBase64String(item.CoverImage))" alt="iskool image" style="" />
+
+                                        }
+                                        else
+                                        {
+                                            <img class="img-responsive" src="~/Uploads/10518-isks 5.jpg" alt="iskool Image" style="">
+                                        }
+                                    </a>
+                                </div>
+                            }
+                                @if (Request.Browser.IsMobileDevice)
+                                {
+                                    <div class="card-body" style="padding: 0.5rem">
+                                        <h6 class="card-title" style="margin:4px 7px;font-weight:800;font-size:15px;">
+                                            <a href="@Url.Action("TopicIndex", "Tutor", new { id = item.Id })">
+
+                                               @item.Name
+                                            </a>
+                                        </h6>
+                                        <h6 class="card-title" style="margin:4px 7px;font-weight:200;font-size:11px;">@item.Topics.Count() Lessons <i class="fa fa-dot-circle" style="font-size:10px;"></i> @item.ClassLevel.Name <span style="float:right;">@item.Topics.Sum(x => x.Views).ToString() Views</span></h6>
+                                        <p class="card-title" style="margin:9px 7px 4px;font-weight:200;font-size:10px;line-height: 1.35714;">@item.Description</p>
+
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="card-body" style="">
+                                        <h6 class="card-title" style="margin:4px 7px;font-weight:200;">
+                                            <a href="#">
+
+                                                <i class="fa fa-book"></i> @item.Name
+                                            </a>
+                                        </h6>
+                                        <h6 class="card-title" style="margin:4px 7px;font-weight:200;">@item.Topics.Count() Lessons <i class="fa fa-dot-circle" style="font-size:10px;"></i> @item.ClassLevel.Name <span style="float:right;">@item.Topics.Sum(x => x.Views).ToString() Views</span></h6>
+                                        <p class="card-title" style="margin:4px 7px;font-weight:200;line-height: 1.35714;">@item.Description</p>
+
+                                    </div>
+
+                                }
+                            </div>
+                       
+                    </div>
+                }
+                <style>
+                    .page p {
+                        margin: 0 0 1px;
+                    }
+
+                    .page .pagination {
+                        margin: 2px 0;
+                    }
+
+                        .page .pagination > li > a, .page .pagination > li > span {
+                            padding: 3px 6px;
+                        }
+                </style>
+                <div class="container col-md-12 text-center page" style="margin-left:auto;margin-right:auto;">
+
+                    <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+                    @Html.PagedListPager(Model, page => Url.Action("SubjectIndex",
+        new { page }))
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+
+
+
+</main>

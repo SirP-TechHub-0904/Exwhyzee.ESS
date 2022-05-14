@@ -1,0 +1,50 @@
+﻿
+<div class="text-center">
+
+   @Html.Raw(ViewBag.status3)
+    (LIVE FROM <img src="https://covid19.ncdc.gov.ng/img/ncdc_logo%20black%20text.png" style="height:50px;"/>)
+    <br /><br />
+</div>
+
+<div class="box-body table-responsive no-padding">
+    <table id="example1" class="table table-bordered table-hover" border="1">
+        @Html.Raw(ViewBag.status1)
+
+    </table>
+</div>
+<br />
+<br />
+<div class="box-body table-responsive no-padding">
+    <table id="example2" class="table table-bordered table-hover" border="1">
+        @Html.Raw(ViewBag.status2)
+    </table>
+</div>
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}

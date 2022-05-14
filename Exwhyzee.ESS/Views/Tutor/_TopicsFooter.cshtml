@@ -1,0 +1,21 @@
+﻿
+@model IEnumerable<Exwhyzee.ESS.Models.Entities.Topic>
+
+@foreach (var item in Model)
+{
+
+
+
+    <li>
+        <a href="@Url.Action("Details", "Tutor", new { id = item.Id, title = item.Title })">
+            <div class="alignleft">
+                <img src="~/Uploads/@item.VideoCover" alt="image description">
+            </div>
+            <div class="description-wrap">
+                <h4>@item.Title</h4>
+                <strong class="price text-primary element-block font-lato text-uppercase">Free</strong>
+            </div>
+        </a>
+    </li>
+
+}

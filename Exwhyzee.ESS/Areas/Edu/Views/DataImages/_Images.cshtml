@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.DataImages>
+
+<p>
+    @Html.ActionLink("Create New", "Create", "DataImages")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ImageLink)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="~/Uploads/@item.ImageLink" style="height:100px;" /><br />
+            @item.ImageLink
+        </td>
+        <td>
+          
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

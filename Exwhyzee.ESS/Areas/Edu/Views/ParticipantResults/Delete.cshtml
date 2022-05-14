@@ -1,0 +1,80 @@
+﻿@model Exwhyzee.ESS.Models.Entities.ParticipantResult
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ParticipantResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Participant.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Participant.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Won)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Won)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Q5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Q5)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

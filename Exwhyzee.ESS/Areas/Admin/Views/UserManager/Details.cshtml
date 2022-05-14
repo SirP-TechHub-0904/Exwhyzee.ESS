@@ -1,0 +1,194 @@
+﻿@model Exwhyzee.ESS.Models.UserProfile.UserProfileModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UserProfileModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SurName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SurName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateRegistered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateRegistered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FacebookLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FacebookLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkedinLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkedinLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhotoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhotoUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplementryCardKeywords)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplementryCardKeywords)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IskoolId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IskoolId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaritalStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaritalStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminReview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminReview)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdminApproval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdminApproval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CV_Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CV_Views)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Portfolio_Views)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Portfolio_Views)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

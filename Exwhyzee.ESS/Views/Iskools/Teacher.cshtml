@@ -1,0 +1,191 @@
+﻿
+@model PagedList.IPagedList<Exwhyzee.ESS.Models.Entities.Dto.UserWithInfo>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Teacher";
+}
+
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/img/tag.jpg);">
+        <div class="container holder">
+            <div class="align">
+                <h1 style="color:#ffffff;">Teachers</h1>
+            </div>
+        </div>
+    </header>
+    <!-- breadcrumb nav -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Teachers</a></li>
+
+            </ol>
+        </div>
+    </nav>
+
+
+
+    <div class="container">
+        <div class="row" style="margin-top:15px">
+            <div class="col-md-9">
+                @using (Html.BeginForm("Teacher", "Iskools", null, FormMethod.Post, new { @class = "" }))
+                {
+
+                    <div class="input-group" style="">
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                        <!-- /btn-group -->
+                        <input type="text" name="SearchString" class="form-control" value="@ViewBag.CurrentFilter" placeholder="Search by Subjects, location, email, phone number, job title...">
+                    </div>
+
+                }
+            </div>
+        </div>
+
+        <div class="row" style="margin-top:15px;margin-bottom:10px;">
+            
+            <div class="col-md-9" style="margin-bottom:5px;">
+                @foreach (var item in Model)
+                {
+                    <div class="card" style="margin-bottom:4px;">
+                        <div class="card-horizontal">
+
+                            <div class="img-square-wrapper" style="width:100px !important;height:100px;">
+                                <a href="@Url.Action("MyCV", "Account", new { area="Dashboard", email=item.Email})">
+
+                                    @if (item.PhotoUrl != null)
+                                    {
+                                        <img class="" src="data:image/jpg;base64,@(Convert.ToBase64String(item.PhotoUrl))" alt="iskool image" style="max-height:100px;max-width:100px;margin:auto;">
+
+                                    }
+                                    else
+                                    {
+                                        <img class="" src="http://exwhyzee.ng/libraries/admin/dist/img/avatar5.jpg" alt="iskool Image" style="max-height:100px;max-width:100px;">
+                                    }
+                                </a>
+                            </div>
+                            @if (Request.Browser.IsMobileDevice)
+                            {
+                        <div class="card-body" style="padding: 0.5rem">
+                            <h6 class="card-title" style="margin:2px 7px 2px;font-weight:900;font-size:11px;">
+                                <a href="@Url.Action("MyCV", "Account", new { area="Dashboard", email=item.Email})">
+
+                                    <i class="fa fa-user"></i> @item.SurName @item.FirstName @item.LastName (@item.IskoolId)
+                                    @if (item.Verified == true)
+                                    {
+                                        <abbr title="User has been Verified">
+                                            <img src="~/Content/img/a-verified.png" style="height:20px;width:20px;" />
+                                        </abbr> }
+                                    else if (item.Verified == false)
+                                    {
+                                        <abbr title="User Verification Pending">
+                                            <img src="~/Content/img/not-verified.png" style="height:20px;width:20px;" />
+                                        </abbr>
+                                    }
+                                </a>
+                            </h6>
+                            <h6 class="card-title" style="margin:2px 7px 2px;font-weight:200;font-size:11px;"><i class="fa fa-envelope"></i> <a href="mailto:@item.Email">@item.Email</a> <i class="fa fa-circle-o"></i> <i class="fa fa-phone"></i> <a href="tel:@item.Phone">@item.Phone</a></h6>
+                            <h6 class="card-title" style="margin:2px 7px 2px;font-weight:200;font-size:11px;"><i class="fa fa-info-circle"></i> @item.Title</h6>
+                            <h6 class="card-title" style="margin:2px 7px 2px;font-weight:200;font-size:11px;"><i class="fa fa-address-book"></i> @item.State | @item.Religion</h6>
+
+                            <h6 class="card-title" style="margin:4px 7px;font-weight:200;font-size:11px;">
+                                <i class="fa fa-book"></i>
+                                @foreach (var i in item.SubjectSpecialistModels)
+                                {
+                                    <span>@i.Subject</span>
+                                    <span> <i class="fa fa-circle-o"></i> </span>
+                                }
+                            </h6>
+
+                        </div>
+                            }
+                            else
+                            {
+                                <div class="card-body" style="padding:0.3em;">
+                                    <h6 class="card-title" style="margin:1px 7px 2px;font-weight:900;">
+                                        <a href="@Url.Action("MyCV", "Account", new { area="Dashboard", email=item.Email})">
+
+
+                                            <i class="fa fa-user"></i> @item.SurName @item.FirstName @item.LastName (@item.IskoolId) 
+
+                                            @if (item.Verified == true)
+                                            {
+                                                <abbr title="User has been Verified">
+                                                    <img src="~/Content/img/a-verified.png" style="height:20px;width:20px;" />
+                                                </abbr> }
+                                            else if (item.Verified == false)
+                                            {
+                                                <abbr title="User Verification Pending">
+                                                    <img src="~/Content/img/not-verified.png" style="height:20px;width:20px;" />
+                                                   </abbr>
+                                                    }
+
+                                            </a>
+                                    </h6>
+                                    <h6 class="card-title" style="margin:1px 7px 1px;font-weight:200;font-size:13px;"><i class="fa fa-envelope"></i> <a href="mailto:@item.Email">@item.Email</a> <i class="fa fa-circle-o"></i> <i class="fa fa-phone"></i> <a href="tel:@item.Phone">@item.Phone</a></h6>
+                                    <h6 class="card-title" style="margin:1px 7px 1px;font-weight:200;font-size:13px;"><i class="fa fa-info-circle"></i> @item.Title</h6>
+                                    <h6 class="card-title" style="margin:1px 7px 1px;font-weight:200;font-size:13px;"><i class="fa fa-address-book"></i> @item.State | @item.Religion</h6>
+                                    <h6 class="card-title" style="margin:1px 7px 1px;font-weight:200;font-size:13px;">
+                                        <i class="fa fa-book"></i>
+                                        @foreach (var i in item.SubjectSpecialistModels)
+                                        {
+                                            <span>@i.Subject</span>
+                                            <span> <i class="fa fa-circle-o"></i> </span>
+                                        }
+                                    </h6>
+
+                                </div>
+
+                            }
+                        </div>
+                        <div class="card-footer">
+                            
+                            <small class="text-muted">
+                                Last seen @item.LastSeen | @item.Reviews.Count() Reviews | @item.Topics.Count() Topic | @item.CV_Views CV Views | @item.Portfolio_Views Portfolio Views | <a href="whatsapp://send?text=http://iskools.com/Dashboard/Account/MyCV?email=@item.Email" data-action="share/whatsapp/share" style="border:1px solid #2ac44d;padding:2px 5px;"><i style="color:#2ac44d;" class="fa fa-whatsapp"></i> share</a>
+                            </small>
+                        </div>
+                    </div>
+                }
+                <style>
+                   .page p {
+                        margin: 0 0 1px;
+                    }
+                    .page .pagination {
+                     
+                        margin: 2px 0;
+                       
+                    }
+                        .page .pagination > li > a, .page .pagination > li > span {
+                           
+                            padding: 3px 6px;
+                           
+                        }
+                </style>
+                <div class="container col-md-12 text-center page" style="margin-left:auto;margin-right:auto;">
+
+                    <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</p>
+
+                    @Html.PagedListPager(Model, page => Url.Action("Teacher",
+        new { page }))
+                </div>
+            </div>
+            
+
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+
+
+
+</main>
+
+

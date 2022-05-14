@@ -1,0 +1,12 @@
+﻿.inner-wrap ul li{
+    padding:8px;
+    font-size:15px;
+}
+.inner-wrap ul {
+    /*list-style-image:url(../Content/Assest/images/icon_iskool.png)*/
+}
+.inner-wrap ul {
+    list-style-image: url(../Content/Assest/images/icoo.png);
+   
+    vertical-align: middle;
+}

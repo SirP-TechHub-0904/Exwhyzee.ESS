@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    if (User.IsInRole("Teacher") || User.IsInRole("Volunteer"))
+    {
+        <li class="nav-item"><a href="@Url.Action("Index", "Account", new { area = "Dashboard" })" class="nav-link" style="color:#dd5044 !important;">Dashboard</a></li>
+    }
+    if (User.IsInRole("Admin") || User.IsInRole("SuperAdmin"))
+    {
+        <li class="nav-item"><a href="@Url.Action("Index", "Datas", new { area = "Admin" })" class="nav-link" style="color:#dd5044 !important;">Dashboard</a></li>
+    }
+    if (User.IsInRole("Student"))
+    {
+        <li class="nav-item">
+            <a href="@Url.Action("LiveList", "OnlineClass", new { area = "Student" })" class="nav-link" style="color: #dd5044 !important;">Dashboard</a>
+        </li>
+    }
+
+    <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link" style="color:#dd5044 !important;">logout</a></li>
+
+    using (Html.BeginForm("LogOff", "Auth", FormMethod.Post, new { id = "logoutForm", @class = "" }))
+    {
+        @Html.AntiForgeryToken()
+
+    }
+}
+else
+{
+
+    <li class="nav-item"><a href="@Url.Action("Login", "Auth")" class="nav-link" style="color:#dd5044 !important;">Login</a></li>
+    @*<li class="nav-item"><a href="@Url.Action("CreateAccount", "Auth")" class="nav-link" style="color:#dd5044 !important;">Register</a></li>*@
+    <li class="nav-item dropdown">
+        <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Register<span class="fa fa-angle-down icons-dropdown"></span></a>
+        <ul class="dropdown-menu edugate-dropdown-menu-1">
+            <li><a class="dropdown-item" href="@Url.Action("CreateAccount", "Auth")">Teacher/Volunteer</a></li>
+            <li><a class="dropdown-item" href="@Url.Action("StudentAccount", "Auth")">Student</a></li>
+
+        </ul>
+    </li>
+
+}

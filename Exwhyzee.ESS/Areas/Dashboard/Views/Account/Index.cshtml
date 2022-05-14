@@ -1,0 +1,37 @@
+﻿@model Exwhyzee.ESS.Models.UserProfile.UserProfileModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<section class="content">
+    @Html.Action("_DashboardWidget", "Account", new { area = "Dashboard" })
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-body box-profile" style="border:1px solid #0094ff;">
+
+                <h3 class="profile-username text-center">Iskool Verification Review </h3>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <strong><i class="fa fa-key margin-r-5"></i> Verified: @Model.AdminApproval</strong>
+
+
+                    <hr style="margin:0px;">
+                    <strong><i class="fa fa-user margin-r-5"></i> Iskool Review</strong>
+
+                    <p class="text-muted">
+                        @Model.AdminReview
+                    </p>
+
+                    <h4 class="text-danger">Always keep your profile updated.</h4>
+                </div>
+
+                <a href="#" class="btn btn-primary btn-block"><b>View Other Reviews (0)</b></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*@Html.Action("_Covid19", "Account")*@

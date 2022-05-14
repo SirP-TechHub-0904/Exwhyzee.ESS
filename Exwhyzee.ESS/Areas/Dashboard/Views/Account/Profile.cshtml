@@ -1,0 +1,502 @@
+﻿@model Exwhyzee.ESS.Models.UserProfile.UserProfileModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .alert > p + p {
+        margin-top: 0px;
+        line-height: 1.02857143;
+        color: #ffffff !important;
+    }
+
+    .alert button {
+        color: red;
+        background-color: transparent;
+        border: none;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">My Profile</h3>
+
+                <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            @if (TempData["msg"] != null)
+            {
+                <div class="alert alert-warning">
+                    <strong>Note!</strong> @TempData["msg"]
+                </div>
+            }
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="box-body box-profile" style="border:1px solid #0094ff;">
+                            @if (Model.PhotoUrl != null)
+                            {
+                                <img class="profile-user-img img-responsive img-circle" src="data:image/jpg;base64,@(Convert.ToBase64String(Model.PhotoUrl))" alt="User profile picture">
+
+
+                            }
+                            else
+                            {
+                                <p class="profile-user-img img-responsive img-circle">Update profile to view profile image</p>
+                            }
+                            <h3 class="profile-username text-center">@Model.SurName @Model.FirstName @Model.LastName </h3>
+                            <h4 class="profile-username text-center">@Model.Title </h4>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+                                <strong><i class="fa fa-address-book margin-r-5"></i> About Me</strong>
+
+                                <p class="text-muted">
+                                    @Model.ComplementryCardKeywords
+                                </p>
+                                <hr style="margin:0px;">
+                                <strong><i class="fa fa-address-book margin-r-5"></i> Contact Address</strong>
+
+                                <p class="text-muted">
+                                    @Model.ContactAddress
+                                </p>
+
+
+                            </div>
+
+                            <a href="@Url.Action("MyCV", "Account", new { area="Dashboard", email=User.Identity.Name})" class="btn btn-primary btn-block"><b>View my CV</b></a>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /.row -->
+            </div>
+            @using (Html.BeginForm("Profile", "Account", null, FormMethod.Post, new { id = "", @class = "", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="box-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.UserId)
+                    @Html.HiddenFor(model => model.IskoolId)
+                    @Html.HiddenFor(model => model.PhotoUrl)
+
+                    <input type="hidden" value="@Model.DateRegistered" name="DateRegistered" />
+                    <input type="hidden" value="@Model.UserId" name="UserId" />
+                    <input type="hidden" value="@Model.Id" name="Id" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Job Title
+                                </label>
+                                <div class="">
+
+                                    <input type="text" value="@Model.Title" name="Title" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Surname
+                                </label>
+                                <div class="">
+                                    <input type="text" value="@Model.SurName" name="SurName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    First Name
+                                </label>
+                                <div class="">
+                                    <input type="text" value="@Model.FirstName" name="FirstName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Last Name
+                                </label>
+                                <div class="">
+                                    <input type="text" value="@Model.LastName" name="LastName" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Email
+                                    </label>
+                                    <div class="">
+                                        <input type="text" value="@ViewBag.Email" readonly class="form-control">
+                                        <input type="hidden" value="@ViewBag.Email" name="Email" class="form-control">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Phone Number
+                                    </label>
+                                    <div class="">
+                                        <input type="text" value="@ViewBag.Phone" name="Phone" class="form-control">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Religion (@Model.Religion)
+                                    </label>
+                                    <div class="">
+                                        <select class="form-control" value="@Model.Religion" name="Religion" required="required">
+
+                                            <option value="">Choose</option>
+                                            @if (Model.Religion == "Christianity")
+                                            {
+                                                <option value="Christianity" selected>Christianity</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Christianity">Christianity</option>
+                                            }
+                                            @if (Model.Religion == "Islam")
+                                            {
+                                                <option value="Islam" selected>Islam</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Islam">Islam</option>
+                                            }
+                                            @if (Model.Religion == "Nonreligious (Secular/Agnostic/Atheist)")
+                                            {
+                                                <option value="Nonreligious (Secular/Agnostic/Atheist)" selected>Nonreligious (Secular/Agnostic/Atheist)</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Nonreligious (Secular/Agnostic/Atheist)">Nonreligious (Secular/Agnostic/Atheist)</option>
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Gender (@Model.Gender)
+                                    </label>
+                                    <div class="">
+                                        <select class="form-control" value="@Model.Gender" name="Gender">
+
+                                            <option value="">Choose</option>
+                                            @if (Model.Gender == "Male")
+                                            {
+                                                <option value="Male" selected>Male</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Male">Male</option>
+                                            }
+                                            @if (Model.Gender == "Female")
+                                            {
+                                                <option value="Female" selected>Female</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Female">Female</option>
+                                            }
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        MaritalStatus (@Model.MaritalStatus)
+                                    </label>
+                                    <div class="">
+                                        <select class="form-control" value="@Model.MaritalStatus" name="MaritalStatus">
+                                            <option value="">Choose</option>
+                                            @if (Model.MaritalStatus == "Single")
+                                            {
+                                                <option value="Single" selected>Single</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Single">Single</option>
+                                            }
+                                            @if (Model.MaritalStatus == "Married")
+                                            {
+                                                <option value="Married" selected>Married</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Married">Married</option>
+                                            }
+                                            @if (Model.MaritalStatus == "Widow")
+                                            {
+                                                <option value="Widow" selected>Widow</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Widow">Widow</option>
+                                            }
+                                            @if (Model.MaritalStatus == "Widower")
+                                            {
+                                                <option value="Widower" selected>Widower</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Widower">Widower</option>
+                                            }
+                                            @if (Model.MaritalStatus == "Divorced")
+                                            {
+                                                <option value="Divorced" selected>Divorced</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="Divorced">Divorced</option>
+                                            }
+
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Address
+                                    </label>
+                                    <div class="">
+                                        <textarea class="form-control" value="@Model.ContactAddress" name="ContactAddress">@Model.ContactAddress</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Description
+                                    </label>
+                                    <div class="">
+                                        <textarea class="form-control" value="@Model.Description" name="Description">@Model.Description</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Date (dd/MM/yyyy)
+
+                                    </label>
+                                    <div class="">
+                                        @if (Model.DateOfBirth != null)
+                                        {
+                                            <input type="text" value="@Model.DateOfBirth.Value.ToString("dd/MM/yyy")" name="DateOfBirth" class="form-control">
+                                        }
+                                        else
+                                        {
+                                            <input type="text" name="DateOfBirth" class="form-control">}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Country
+                                    </label>
+                                    <div class="">
+                                        <input type="text" value="@Model.Country" name="Country" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        State of Origin (@Model.State)
+
+                                    </label>
+                                    <div class="">
+                                        @Html.DropDownList("State", ViewBag.StateOfOrigin as SelectList, "Update State of Origin", new { id = "originalstate", @class = "form-control", required = "required" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">
+                                        Local Govt Area (@Model.LGA)
+                                    </label>
+                                    <div class="">
+                                        <select id="LGA" name="LGA" class="form-control"></select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Facebook Link
+                                </label>
+                                <div class="">
+                                    <input type="text" value="@Model.FacebookLink" name="FacebookLink" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Twitter Link
+                                </label>
+                                <div class="">
+                                    <input type="text" value="@Model.TwitterLink" name="TwitterLink" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label">
+                                    Linkedin Link
+                                </label>
+                                <div class="">
+                                    <input type="text" value="@Model.LinkedinLink" name="LinkedinLink" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label">
+                                Complementry Card Keywords
+                            </label>
+                            <div class="">
+                                <input type="text" value="@Model.ComplementryCardKeywords" name="ComplementryCardKeywords" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                Profile Photo
+                            </label>
+                            <div class="">
+                                <input class="form-control" type="file" name="upload" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="form-group">
+                        <div class="">
+
+                            <button id="submit" type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+<!-- SELECT2 EXAMPLE -->
+
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.Action("Experience", "Account", new { Profileid = Model.Id })
+    </div>
+    <div class="col-md-6">
+
+        @Html.Action("Education", "Account", new { Profileid = Model.Id })
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.Action("Language", "Account", new { Profileid = Model.Id })
+    </div>
+    <div class="col-md-6">
+
+        @Html.Action("Skill", "Account", new { Profileid = Model.Id })
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.Action("Certificate", "Account", new { Profileid = Model.Id })
+    </div>
+    <div class="col-md-6">
+        @Html.Action("MembershipOfLearnered", "Account", new { Profileid = Model.Id })
+
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.Action("TrainingAndWorkShopModels", "Account", new { Profileid = Model.Id })
+    </div>
+    <div class="col-md-6">
+        @Html.Action("SubjectSpecialistModel", "Account", new { Profileid = Model.Id })
+    </div>
+</div>
+
+
+
+@*@if (TempData["alert"] != null)
+    {*@
+@section Scripts {
+
+}
+
+@*}*@
+

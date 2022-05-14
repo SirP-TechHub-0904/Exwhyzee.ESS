@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.QuestionMain>
+
+
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/img/for-web1.jpg);">
+        <div class="container holder">
+            <div class="align">
+                <h3 style="">Answer five (5) @ViewBag.names and win credit</h3>
+            </div>
+        </div>
+    </header>
+    <!-- breadcrumb nav -->
+    <nav class="breadcrumb-nav">
+        <div class="container">
+            <!-- breadcrumb -->
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li class="active">IQ Test</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- two columns -->
+    <div id="two-columns" class="container">
+        <div class="row">
+            <!-- content -->
+            <article id="content" class="col-xs-12 col-md-12">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                       
+                        <h6>@TempData["Welcome"]</h6>
+                        <input type="hidden" name="answer5id" id="answer5id" value="@ViewBag.id" />
+                    </div>
+                    <div class="modal-body">
+                        @{
+                            int sno = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <div class="loginmodal-container">
+                                @{ sno++; }
+
+                                <h6>( @sno )  @item.TextQ</h6>
+
+                                <ul style="list-style-type:none;display:inline-block;">
+                                    <li>A. @item.OptionA</li>
+                                    <li>B. @item.OptionB</li>
+                                    <li>C. @item.OptionC</li>
+                                    <li>D. @item.OptionD</li>
+                                </ul>
+                                <div class="">
+                                    @{
+                                        string oop = "answer" + sno;
+                                        string oop1 = "answer" + sno + "id";
+                                    }
+                                    <input name="@oop" type="text" id="@oop" placeholder="type the right option eg. A OR B..." />
+                                    <input name="@oop1" value="@item.Id" type="hidden" id="@oop1" />
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" onclick="myFunctiona(); this.disabled=true; this.value='Submitting…'; ">Submit</button>
+                        @*<button type="button" onclick="checkingReg(); this.disabled=true; this.value='Submitting…'; " class="btn btn-primary">Submit</button>*@
+
+                    </div>
+                </div>
+</article>
+        </div>
+    </div>
+    </main>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+        <script>
+          window.onload=function(){ 
+    var counter = 122;
+    var interval = setInterval(function() {
+        counter--;
+        $("#seconds").text(counter);
+        if (counter == 0) {
+            redirect();
+            clearInterval(interval);
+        }
+    }, 1000);
+
+};
+
+function redirect() {
+    checkingReg();
+            }
+
+            function myFunctiona(a, b) {
+                return checkingReg();
+            }
+          
+           
+        </script>
+    }

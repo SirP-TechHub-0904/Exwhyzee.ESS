@@ -1,0 +1,148 @@
+﻿@model IEnumerable<SchoolPortal.Web.Models.Dtos.Zoom.Participant>
+
+@{
+    ViewBag.Title = "LiveClassParticipant";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> Live Class Participant</h3>
+                <dl class="dl-horizontal">
+
+                    <dt>
+                        Class
+
+                    </dt>
+
+                    <dd>
+                        @ViewBag.prof.ClassLevel.ClassName
+                    </dd>
+                    <dt>
+
+                        Subject
+                    </dt>
+
+                    <dd>
+                        @ViewBag.prof.Subject.SubjectName
+                    </dd>
+                    <dt>
+                        Teacher
+
+                    </dt>
+
+                    <dd>
+                        @ViewBag.prof.User.Surname
+                        @ViewBag.prof.User.FirstName
+                        @ViewBag.prof.User.OtherName
+                    </dd>
+                </dl>
+            </div>
+            
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover" border="1">
+
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.user_name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.device)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ip_address)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.join_time)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.leave_time)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.leave_reason)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sno = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @{ sno++; }
+                                @sno
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.user_name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.device)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ip_address)
+                            </td>
+
+                            <td style="word-break:break-all;">
+                                @Html.DisplayFor(modelItem => item.join_time)
+                            </td>
+                            <td style="word-break:break-all;">
+                                @Html.DisplayFor(modelItem => item.leave_time)
+                            </td>
+
+                            <td style="word-break:break-all;">
+                                @Html.DisplayFor(modelItem => item.leave_reason)
+                            </td>
+
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+
+
+

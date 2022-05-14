@@ -1,0 +1,104 @@
+﻿@model Exwhyzee.ESS.Models.Entities.Book
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">New Book</h3>
+                @if (TempData["fail"] != null)
+                {
+
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        @TempData["fail"]
+                    </div>
+                }
+            </div>
+            @using (Html.BeginForm("Create", "Books", null, FormMethod.Post, new { id = "", enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="box-body">
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            <textarea rows="5" class="form-control" name="Description"></textarea>
+                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.AuthorInformation, htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            <textarea rows="5" class="form-control" name="AuthorInformation"></textarea>
+                            @Html.ValidationMessageFor(model => model.AuthorInformation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BookCategoryId, "BookCategoryId", htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.DropDownList("BookCategoryId", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BookCategoryId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Book Cover", htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            <input type="file" name="cover" class="form-control" />
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                            @Html.Label("Upload Book", htmlAttributes: new { @class = "control-label" })
+                            <div class="">
+                                <input type="file" name="upload" class="form-control" />
+                            </div>
+                        </div>*@
+                    <div class="form-group">
+                        @Html.Label("Embed Book", htmlAttributes: new { @class = "control-label" })
+                        <div class="">
+                            @Html.EditorFor(model => model.path, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.path, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label" })
+
+                        @Html.EditorFor(model => model.IsActive)
+                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+                </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <a href="javascript: history.back()" class="btn btn-default">Cancel</a>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</div>

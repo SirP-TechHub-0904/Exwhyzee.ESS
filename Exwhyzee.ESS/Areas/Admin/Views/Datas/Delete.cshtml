@@ -1,0 +1,160 @@
+﻿@model Exwhyzee.ESS.Models.Entities.SchoolPortalData
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>SchoolPortalData</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SiteName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SiteName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SchoolCurrentPrincipal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SchoolCurrentPrincipal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrolStudentsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnrolStudentsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnEnrolStudentsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnEnrolStudentsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalStudentsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalStudentsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PortalUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PortalUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateCeated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateCeated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastModifiedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastModifiedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usedcard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usedcard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NonUsedcard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NonUsedcard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Totalcard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Totalcard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalStaff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalStaff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentSession)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentSession)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

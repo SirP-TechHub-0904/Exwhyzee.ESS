@@ -1,0 +1,108 @@
+﻿@model Exwhyzee.ESS.Models.Entities.ZoomSetting
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Zoom Settings Detail</h3>
+
+
+                <div class="box-body">
+
+                        <dl class="dl-horizontal">
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.SubscriptionAmount)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.SubscriptionAmount)
+                            </dd>
+                            <hr style="border:1px solid #0094ff" />
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ZoomHostOne)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ZoomHostOne)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ZoomHostOnePass)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ZoomHostOnePass)
+                            </dd>
+                            <hr style="border:1px solid #0094ff" />
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ZoomHostTwo)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ZoomHostTwo)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ZoomHostTwoPass)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ZoomHostTwoPass)
+                            </dd>
+                            <hr style="border:1px solid #0094ff" />
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ZoomHostThree)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ZoomHostThree)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ZoomHostThreePass)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ZoomHostThreePass)
+                            </dd>
+                            <hr style="border:1px solid #0094ff" />
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EnableZoom)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EnableZoom)
+                            </dd>
+                            <hr style="border:1px solid #0094ff" />
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.EnableMultipleZoom)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.EnableMultipleZoom)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id})
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+

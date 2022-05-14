@@ -1,0 +1,96 @@
+﻿@model Exwhyzee.ESS.Models.QuestionMain
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>QuestionMain</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionCategory.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionCategory.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sort)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Img)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Img)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TextQ)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextQ)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OptionD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Answer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Answer)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

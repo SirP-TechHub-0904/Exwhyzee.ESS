@@ -1,0 +1,6 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.Game>
+
+@foreach (var menu in Model)
+{
+    <li><a href="@Url.Action("Play", "Initializer", new { id = menu.Id, title=menu.Title })"><i class="fa fa-circle-o"></i> @menu.Title</a></li>
+}

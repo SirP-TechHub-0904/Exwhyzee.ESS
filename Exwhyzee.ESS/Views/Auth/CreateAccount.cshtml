@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "CreateAccount";
+}
+
+@model Exwhyzee.ESS.Models.RegisterViewModel
+
+@if (Request.Browser.IsMobileDevice == true)
+{
+    <style>
+        .heading-banner .holder {
+            min-height: 121px;
+        }
+    </style>
+}
+else
+{
+    <style>
+        .heading-banner .holder {
+            min-height: 201px;
+        }
+    </style>
+}
+
+<main id="main">
+    <!-- heading banner -->
+    <header class="heading-banner text-white bgCover" style="background-image: url(../../Content/main-iskool/tagi.jpg);">
+        <div class="container holder">
+            <div class="align" style="padding:10px 0;">
+                <h1 style="padding:10px;margin:0 10px;">Create a new account</h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- user log block -->
+    <section class="container user-log-block">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-2 col-md-2"></div>
+                <div class="col-xs-8 col-md-8">
+                    <!-- user log form -->
+                    @using (Html.BeginForm("CreateAccount", "Auth", FormMethod.Post, new { @class = "", role = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="user-log-form">
+                            <div class="form-group">
+                                @Html.Label("Full Name", new { @class = "control-label" })
+                                <div class="">
+                                    <input type="text" name="FullName" class="form-control" required="required" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                <div class="">
+                                    <input type="text" name="Email" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Phone Number", new { @class = "control-label" })
+                                <div class="">
+                                    <input type="text" name="PhoneNumber" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Choose Role", new { @class = "control-label" })
+                                <div class="">
+                                    @Html.DropDownList("RoleId", ViewBag.Id as SelectList, "Select your role", new { id = "", @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                <div class="">
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control element-block" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                                <div class="">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control element-block" })
+                                </div>
+                            </div>
+                            <div class="btns-wrap">
+                                <div class="wrap">
+
+                                    <button type="submit" class="btn btn-theme btn-warning fw-bold font-lato text-uppercase">Create Account</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="col-xs-2 col-md-2"></div>
+            </div>
+</section>
+</main>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

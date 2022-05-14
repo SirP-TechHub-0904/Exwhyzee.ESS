@@ -1,0 +1,718 @@
+﻿<!DOCTYPE html>
+<html lang="en-US" class="js scheme_default js_active  vc_desktop  vc_transform  vc_transform ">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="profile" href="">
+    <link rel="pingback" href="">
+    <title>Simulation || ISkools.com</title>
+ 
+    <link property="stylesheet" rel="stylesheet" id="vc_extensions_cqbundle_adminicon-css" href="~/Content/simulation/css/admin_icon.min.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="wp-block-library-css" href="~/Content/simulation/css/style.min.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="contact-form-7-css" href="~/Content/simulation/css/styles.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="essential-grid-plugin-settings-css" href="~/Content/simulation/css/settings.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="tp-open-sans-css" href="~/Content/simulation/css/css.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="tp-raleway-css" href="~/Content/simulation/css/css(1).css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="tp-droid-serif-css" href="~/Content/simulation/css/css(2).css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="tp-fontello-css" href="~/Content/simulation/css/fontello.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="rs-plugin-settings-css" href="~/Content/simulation/css/settings(1).css" type="text/css" media="all">
+    <style id="rs-plugin-settings-inline-css" type="text/css">
+
+        #rs-demo-id {
+        }
+
+        .ares.tp-bullets {
+        }
+
+            .ares.tp-bullets:before {
+                content: " ";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: transparent;
+                padding: 10px;
+                margin-left: -10px;
+                margin-top: -10px;
+                box-sizing: content-box;
+            }
+
+        .ares .tp-bullet {
+            width: 13px;
+            height: 13px;
+            position: absolute;
+            background: rgba(229, 229, 229, 1);
+            border-radius: 50%;
+            cursor: pointer;
+            box-sizing: content-box;
+        }
+
+            .ares .tp-bullet:hover,
+            .ares .tp-bullet.selected {
+                background: rgba(255, 255, 255, 1);
+            }
+
+        .ares .tp-bullet-title {
+            position: absolute;
+            color: 136, 136, 136;
+            font-size: 12px;
+            padding: 0px 10px;
+            font-weight: 600;
+            right: 27px;
+            top: -4px;
+            background: rgba(255,255,255,0.75);
+            visibility: hidden;
+            transform: translatex(-20px);
+            -webkit-transform: translatex(-20px);
+            transition: transform 0.3s;
+            -webkit-transition: transform 0.3s;
+            line-height: 20px;
+            white-space: nowrap;
+        }
+
+            .ares .tp-bullet-title:after {
+                width: 0px;
+                height: 0px;
+                border-style: solid;
+                border-width: 10px 0 10px 10px;
+                border-color: transparent transparent transparent rgba(255,255,255,0.75);
+                content: " ";
+                position: absolute;
+                right: -10px;
+                top: 0px;
+            }
+
+        .ares .tp-bullet:hover .tp-bullet-title {
+            visibility: visible;
+            transform: translatex(0px);
+            -webkit-transform: translatex(0px);
+        }
+
+        .ares .tp-bullet.selected:hover .tp-bullet-title {
+            background: rgba(255, 255, 255, 1);
+        }
+
+            .ares .tp-bullet.selected:hover .tp-bullet-title:after {
+                border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+            }
+
+        .ares.tp-bullets:hover .tp-bullet-title {
+            visibility: hidden;
+        }
+
+        .ares.tp-bullets:hover .tp-bullet:hover .tp-bullet-title {
+            visibility: visible;
+            transform: translateX(0px) translatey(0px);
+            -webkit-transform: translateX(0px) translatey(0px);
+        }
+
+
+        /* VERTICAL */
+        .ares.nav-dir-vertical.nav-pos-hor-left .tp-bullet-title {
+            right: auto;
+            left: 27px;
+            transform: translatex(20px);
+            -webkit-transform: translatex(20px);
+        }
+
+            .ares.nav-dir-vertical.nav-pos-hor-left .tp-bullet-title:after {
+                border-width: 10px 10px 10px 0 !important;
+                border-color: transparent rgba(255,255,255,0.75) transparent transparent;
+                right: auto !important;
+                left: -10px !important;
+            }
+
+        .ares.nav-dir-vertical.nav-pos-hor-left .tp-bullet.selected:hover .tp-bullet-title:after {
+            border-color: transparent rgba(255, 255, 255, 1) transparent transparent !important;
+        }
+
+
+
+        /* HORIZONTAL BOTTOM && CENTER */
+        .ares.nav-dir-horizontal.nav-pos-ver-center .tp-bullet-title,
+        .ares.nav-dir-horizontal.nav-pos-ver-bottom .tp-bullet-title {
+            top: -35px;
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%) translateY(-10px);
+            -webkit-transform: translateX(-50%) translateY(-10px);
+        }
+
+            .ares.nav-dir-horizontal.nav-pos-ver-center .tp-bullet-title:after,
+            .ares.nav-dir-horizontal.nav-pos-ver-bottom .tp-bullet-title:after {
+                border-width: 10px 10px 0px 10px;
+                border-color: rgba(255,255,255,0.75) transparent transparent transparent;
+                right: auto;
+                left: 50%;
+                margin-left: -10px;
+                top: auto;
+                bottom: -10px;
+            }
+
+        .ares.nav-dir-horizontal.nav-pos-ver-center .tp-bullet.selected:hover .tp-bullet-title:after,
+        .ares.nav-dir-horizontal.nav-pos-ver-bottom .tp-bullet.selected:hover .tp-bullet-title:after {
+            border-color: rgba(255, 255, 255, 1) transparent transparent transparent;
+        }
+
+        .ares.nav-dir-horizontal.nav-pos-ver-center .tp-bullet:hover .tp-bullet-title,
+        .ares.nav-dir-horizontal.nav-pos-ver-bottom .tp-bullet:hover .tp-bullet-title {
+            transform: translateX(-50%) translatey(0px);
+            -webkit-transform: translateX(-50%) translatey(0px);
+        }
+
+
+        /* HORIZONTAL TOP */
+        .ares.nav-dir-horizontal.nav-pos-ver-top .tp-bullet-title {
+            top: 25px;
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%) translateY(10px);
+            -webkit-transform: translateX(-50%) translateY(10px);
+        }
+
+            .ares.nav-dir-horizontal.nav-pos-ver-top .tp-bullet-title:after {
+                border-width: 0 10px 10px 10px;
+                border-color: transparent transparent rgba(255,255,255,0.75) transparent;
+                right: auto;
+                left: 50%;
+                margin-left: -10px;
+                bottom: auto;
+                top: -10px;
+            }
+
+        .ares.nav-dir-horizontal.nav-pos-ver-top .tp-bullet.selected:hover .tp-bullet-title:after {
+            border-color: transparent transparent rgba(255, 255, 255, 1) transparent;
+        }
+
+        .ares.nav-dir-horizontal.nav-pos-ver-top .tp-bullet:hover .tp-bullet-title {
+            transform: translateX(-50%) translatey(0px);
+            -webkit-transform: translateX(-50%) translatey(0px);
+        }
+
+
+        .tp-caption.PlayButton, .PlayButton {
+            color: #ffffff;
+            font-size: 20px;
+            line-height: 22px;
+            font-weight: 400;
+            font-style: normal;
+            font-family:;
+            text-decoration: none;
+            background-color: transparent;
+            border-color: transparent;
+            border-style: none;
+            border-width: 0 0 0 0px;
+            border-radius: 0 0 0 0px
+        }
+
+        #rev_slider_2_2 .uranus.tparrows {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0);
+        }
+
+            #rev_slider_2_2 .uranus.tparrows:before {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 30px;
+                transition: all 0.3s;
+                -webkit-transition: all 0.3s;
+            }
+
+            #rev_slider_2_2 .uranus.tparrows:hover:before {
+                opacity: 0.75;
+            }
+    </style>
+    <link property="stylesheet" rel="stylesheet" id="trx-sale-popup-style-css" href="~/Content/simulation/css/style.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="trx-sale-popup-fonts-css" href="~/Content/simulation/css/stylesheet.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="trx_addons-icons-css" href="~/Content/simulation/css/trx_addons_icons-embedded.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="swiperslider-css" href="~/Content/simulation/css/swiper.min.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="magnific-popup-css" href="~/Content/simulation/css/magnific-popup.min.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="trx_addons-css" href="~/Content/simulation/css/trx_addons.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="trx_addons-animation-css" href="~/Content/simulation/css/trx_addons.animation.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="js_composer_front-css" href="~/Content/simulation/css/js_composer.min.css" type="text/css" media="all">
+
+    <link property="stylesheet" rel="stylesheet" id="greenville-font-Montserrat-css" href="~/Content/simulation/css/stylesheet(1).css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="greenville-font-google_fonts-css" href="~/Content/simulation/css/css(3).css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="fontello-css" href="~/Content/simulation/css/fontello-embedded.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="greenville-main-css" href="~/Content/simulation/css/style(1).css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="greenville-styles-css" href="~/Content/simulation/css/__styles.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="greenville-colors-css" href="~/Content/simulation/css/__colors.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="mediaelement-css" href="~/Content/simulation/css/mediaelementplayer-legacy.min.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="wp-mediaelement-css" href="~/Content/simulation/css/wp-mediaelement.min.css" type="text/css" media="all">
+    <link property="stylesheet" rel="stylesheet" id="greenville-responsive-css" href="~/Content/simulation/css/responsive.css" type="text/css" media="all">
+    <script type="text/javascript" src="~/Content/simulation/js/jquery.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/jquery-migrate.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/jquery.esgbox.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/jquery.themepunch.tools.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/jquery.themepunch.revolution.min.js"></script>
+
+    <script type="text/javascript" src="~/Content/simulation/js/mediaelement-and-player.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/mediaelement-migrate.min.js"></script>
+
+
+
+    <style type="text/css" data-type="vc_shortcodes-custom-css">
+        .vc_custom_1492523878418 {
+            background-color: #f2f3f6 !important;
+        }
+
+      
+
+        .vc_custom_1493295946412 {
+            background-color: #f2f3f6 !important;
+        }
+
+        .vc_custom_1492523608523 {
+            margin-bottom: 8.7rem !important;
+        }
+
+        .vc_custom_1492524264231 {
+            margin-bottom: 2rem !important;
+        }
+
+        .vc_custom_1492524335732 {
+            margin-bottom: 2.5rem !important;
+        }
+
+        .vc_custom_1492525267151 {
+            margin-bottom: 1.8rem !important;
+        }
+
+        .vc_custom_1492525405269 {
+            margin-bottom: 3rem !important;
+        }
+
+        .vc_custom_1492525395303 {
+            margin-bottom: -1.9rem !important;
+        }
+
+        .vc_custom_1492525420366 {
+            margin-bottom: -0.2rem !important;
+        }
+
+        .vc_custom_1492525432200 {
+            margin-bottom: 3rem !important;
+        }
+
+        .vc_custom_1492526335708 {
+            margin-bottom: 2rem !important;
+        }
+
+        .vc_custom_1492526360387 {
+            margin-bottom: 2.5rem !important;
+        }
+
+        .vc_custom_1492526488505 {
+            margin-bottom: 0.8rem !important;
+        }
+
+        .vc_custom_1492526911394 {
+            margin-bottom: -0.4rem !important;
+        }
+
+        .vc_custom_1555060898597 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1492527342733 {
+            margin-bottom: 1.2rem !important;
+        }
+
+        .vc_custom_1492527336712 {
+            margin-bottom: 2.2rem !important;
+        }
+    </style>
+    <noscript>
+        <style type="text/css">
+            .wpb_animate_when_almost_visible {
+                opacity: 1;
+            }
+        </style>
+    </noscript>
+    <style type="text/css" id="trx_addons-inline-styles-inline-css">
+        .vc_custom_1492604627378 {
+            padding-right: 2em !important;
+            padding-left: 2em !important;
+        }
+
+        .vc_custom_1491916403306 {
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1492670893826 {
+            padding-left: 2.4rem !important;
+        }
+
+        .vc_custom_1492683960677 {
+            padding-top: 0.3rem !important;
+        }
+
+        .vc_custom_1491898481825 {
+            margin-bottom: 0.4rem !important;
+        }
+
+        .vc_custom_1491901258491 {
+            margin-bottom: 0.8rem !important;
+        }
+
+        .vc_custom_1491901342506 {
+            margin-bottom: 0.8rem !important;
+        }
+
+        .vc_custom_1489587950227 {
+            background-color: #f2f3f6 !important;
+        }
+
+        .vc_custom_1492509081750 {
+            margin-bottom: 1.9rem !important;
+        }
+
+        .vc_custom_1492685935200 {
+            margin-top: -5.3rem !important;
+        }
+
+        .vc_custom_1492522936980 {
+            margin-bottom: 0.35rem !important;
+        }
+
+        .vc_custom_1492522208545 {
+            margin-bottom: -1rem !important;
+        }
+
+        .vc_custom_1492671465375 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1492522878933 {
+            margin-bottom: -2.7rem !important;
+        }
+
+        .vc_custom_1492672144983 {
+            margin-bottom: 0px !important;
+        }
+
+        .vc_custom_1492522174880 {
+            margin-bottom: 0.5rem !important;
+        }
+
+        .vc_custom_1492522991371 {
+            margin-bottom: 5.5rem !important;
+        }
+
+        .vc_custom_1492011771112 {
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .vc_custom_1492012734776 {
+            margin-bottom: -8.3rem !important;
+        }
+
+        .vc_custom_1492011837997 {
+            margin-bottom: 1.6rem !important;
+        }
+
+        .vc_custom_1492011856573 {
+            margin-bottom: 2rem !important;
+        }
+
+        .vc_custom_1491902517834 {
+            margin-bottom: -0.2rem !important;
+        }
+
+        .vc_custom_1492684194196 {
+            padding-top: 0.2rem !important;
+        }
+
+        .vc_custom_1491903699971 {
+            margin-bottom: 1rem !important;
+        }
+
+        .vc_custom_1491903709336 {
+            padding-right: 3rem !important;
+        }
+
+        .vc_custom_1491908904750 {
+            border-top-width: 1px !important;
+            padding-top: 5px !important;
+            border-top-color: #404144 !important;
+            border-top-style: solid !important;
+        }
+    </style>
+
+</head>
+<body class="home page-template-default page page-id-2 frontpage body_tag scheme_default blog_mode_home body_style_wide  is_stream blog_style_excerpt sidebar_hide expand_content remove_margins header_style_header-custom-20 header_position_default menu_style_top wpb-js-composer js-comp-ver-5.7 vc_responsive desktop_layout">
+
+    <div class="body_wrap">
+        <div class="page_wrap">
+
+            <link rel="stylesheet" href="~/Content/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="~/Content/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="~/Content/nivo-slider/themes/light/light.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="~/Content/nivo-slider/themes/dark/dark.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="~/Content/nivo-slider/themes/bar/bar.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="~/Content/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="~/Content/nivo-slider/demo/style.css" type="text/css" media="screen" />
+
+            <section class="slider-container">
+                <div class="slider-wrapper theme-default">
+
+                    <div id="slider" class="nivoSlider">
+
+                        <img src="~/Content/s-images/physics.jpg" data-thumb="Content/s-images/physics.jpg" alt="" />
+                        <img src="~/Content/s-images/Chemistry.jpg" data-thumb="Content/s-images/Chemistry.jpg" alt="" />
+                        <img src="~/Content/s-images/Biology.jpg" data-thumb="Content/s-images/Biology.jpg" alt="" />
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="page_content_wrap scheme_default">
+                <div class="content_wrap">
+
+
+                    <div class="content">
+
+                        <article id="post-2" class="post_item_single post_type_page post-2 page type-page status-publish hentry">
+
+                            <div class="post_content entry-content">
+
+                                <div class="vc_row wpb_row vc_row-fluid">
+                                    <div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div class="sc_layouts sc_layouts_default sc_layouts_295">
+                                                    <div data-vc-full-width="true" data-vc-full-width-init="true" class="vc_row wpb_row vc_row-fluid vc_custom_1489587950227 vc_row-has-fill" style="position: relative; left: -159.5px; box-sizing: border-box; width: 1349px; padding-left: 159.5px; padding-right: 159.5px;">
+                                                        <div class="wpb_column vc_column_container vc_col-sm-6 vc_col-lg-offset-3 vc_col-md-offset-3 vc_col-sm-offset-3 vc_col-xs-12 sc_layouts_column_icons_position_left">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+                                                                    <div class="vc_empty_space  height_huge" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                    <div class="sc_layouts_item">
+                                                                        <div id="sc_title_2026598449" class="sc_title sc_title_default">
+                                                                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_center sc_item_title_style_default">Welcome To</h6>
+                                                                            <h2 class="sc_item_title sc_title_title sc_align_center sc_item_title_style_default sc_item_title_tag">ISkool Simulation</h2>
+                                                                            <div class="sc_item_descr sc_title_descr sc_align_center">
+                                                                                <p>Our simulations will guide children and adults who want to picture their various Practicals every day. They are engaged in activities that light up their brains, sharpen their critical capacities and develop their consciences.</p>
+                                                                            </div>
+                                                                        </div><!-- /.sc_title -->
+                                                                    </div><div class="vc_empty_space  vc_custom_1492509081750 height_large" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div><div class="vc_row-full-width vc_clearfix"></div><div class="vc_row wpb_row vc_row-fluid">
+                                                        <div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+                                                                    <div class="vc_empty_space  vc_custom_1492685935200" style="height: 0px"><span class="vc_empty_space_inner"></span></div>
+                                                                    <div class="sc_layouts_item">
+                                                                        <div id="sc_services_3195786" class="sc_services sc_services_list sc_services_featured_top">
+                                                                            <div class="sc_services_columns sc_item_columns sc_item_columns_4 trx_addons_columns_wrap">
+                                                                                <div class="trx_addons_column-1_4">
+                                                                                    <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
+                                                                                        <a href="#" id="sc_services_3195786_icon-schedule" class="sc_services_item_icon icon-schedule"></a>
+                                                                                        <div class="sc_services_item_info">
+                                                                                            <div class="sc_services_item_header">
+                                                                                                <h6 class="sc_services_item_title"><a href="#">Flexible</a></h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div><div class="trx_addons_column-1_4">
+                                                                                    <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
+                                                                                        <a href="#" id="sc_services_3195786_icon-accreditation" class="sc_services_item_icon icon-accreditation"></a>
+                                                                                        <div class="sc_services_item_info">
+                                                                                            <div class="sc_services_item_header">
+                                                                                                <h6 class="sc_services_item_title"><a href="#">Accreditation</a></h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div><div class="trx_addons_column-1_4">
+                                                                                    <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
+                                                                                        <a href="" id="sc_services_3195786_icon-curriculum" class="sc_services_item_icon icon-curriculum"></a>
+                                                                                        <div class="sc_services_item_info">
+                                                                                            <div class="sc_services_item_header">
+                                                                                                <h6 class="sc_services_item_title"><a href="">Available to all</a></h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div><div class="trx_addons_column-1_4">
+                                                                                    <div class="sc_services_item without_content with_icon sc_services_item_featured_top">
+                                                                                        <a href="#" id="sc_services_3195786_icon-track" class="sc_services_item_icon icon-track"></a>
+                                                                                        <div class="sc_services_item_info">
+                                                                                            <div class="sc_services_item_header">
+                                                                                                <h6 class="sc_services_item_title"><a href="#">Conscious Builder</a></h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><!-- /.sc_services -->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="vc_row wpb_row vc_row-fluid">
+                                    <div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left">
+                                        <div class="vc_column-inner">
+                                            <div class="wpb_wrapper">
+                                                <div class="sc_layouts sc_layouts_default sc_layouts_297">
+                                                    <div class="vc_row wpb_row vc_row-fluid ipad-row">
+                                                        <div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+                                                                    <div class="vc_empty_space  height_medium" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div><div class="wpb_column vc_column_container vc_col-sm-5 sc_layouts_column_icons_position_left">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+                                                                    <div class="vc_empty_space  vc_custom_1492522936980 height_large" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                    <div class="sc_layouts_item">
+                                                                        <div id="sc_title_1247328108" class="sc_title sc_title_default">
+                                                                            <h6 class="sc_item_subtitle sc_title_subtitle sc_align_left sc_item_title_style_default">A Big Family</h6><h2 class="sc_item_title sc_title_title sc_align_left sc_item_title_style_default sc_item_title_tag">Building Our Children to build the community</h2><div class="sc_item_descr sc_title_descr sc_align_left">
+                                                                                <p>
+                                                                                    Our brain simulates reality. So, our everyday experiences are a form of dreaming, which is to say, they are mental models, simulations, not the things they appear to be. "The Edge of Dreaming".
+                                                                                </p>
+                                                                            </div>
+                                                                        </div><!-- /.sc_title -->
+                                                                    </div><div class="vc_empty_space  vc_custom_1492522208545 height_small" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                    <div class="sc_layouts_item">
+                                                                        
+
+                                                                    </div>
+                                                                    <div class="vc_empty_space" style="height: 0.5rem"><span class="vc_empty_space_inner"></span></div>
+                                                                    <div class="sc_layouts_item">
+                                                                      
+
+                                                                    </div><div class="vc_empty_space  height_small" style="height: 32px">
+                                                                        <span class="vc_empty_space_inner"></span>
+                                                                    </div>
+                                                                   <div class="vc_empty_space  vc_custom_1492671465375" style="height: 0px">
+                                                                        <span class="vc_empty_space_inner"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><div class="wpb_column vc_column_container vc_col-sm-7 sc_layouts_column_icons_position_left">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+                                                                    <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                                                        <div class="center wpb_column vc_column_container vc_col-sm-7 sc_layouts_column_icons_position_left">
+                                                                            <div class="vc_column-inner">
+                                                                                <div class="wpb_wrapper">
+                                                                                    <div class="vc_empty_space  vc_custom_1492522878933 height_large" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                                    <div class="wpb_single_image wpb_content_element vc_align_right">
+
+                                                                                        <figure class="wpb_wrapper vc_figure">
+                                                                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="370" height="521" src="~/Content/s-images/370by521.jpg" class="vc_single_image-img attachment-full" alt="" srcset="~/Content/s-images/370by521.jpg 370w, ~/Content/s-images/370by521.jpg 213w, ~/Content/s-images/370by521.jpg 284w" sizes="(max-width: 370px) 100vw, 370px"></div>
+                                                                                        </figure>
+                                                                                    </div>
+                                                                                    <div class="vc_empty_space  vc_custom_1492672144983" style="height: 0px"><span class="vc_empty_space_inner"></span></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div><div class="center wpb_column vc_column_container vc_col-sm-5 sc_layouts_column_icons_position_left">
+                                                                            <div class="vc_column-inner">
+                                                                                <div class="wpb_wrapper">
+                                                                                    <div class="wpb_single_image wpb_content_element vc_align_left">
+
+                                                                                        <figure class="wpb_wrapper vc_figure">
+                                                                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="269" height="279" src="~/Content/s-images/269.png" class="vc_single_image-img attachment-full" alt=""></div>
+                                                                                        </figure>
+                                                                                    </div>
+                                                                                    <div class="vc_empty_space  vc_custom_1492522174880 height_small" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                                    <div class="wpb_single_image wpb_content_element vc_align_left">
+
+                                                                                        <figure class="wpb_wrapper vc_figure">
+                                                                                            <div class="vc_single_image-wrapper   vc_box_border_grey"><img width="269" height="279" src="~/Content/s-images/pendulum-lab-600.png" class="vc_single_image-img attachment-full" alt=""></div>
+                                                                                        </figure>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left">
+                                                            <div class="vc_column-inner">
+                                                                <div class="wpb_wrapper">
+                                                                    <div class="vc_empty_space  vc_custom_1492522991371 height_medium" style="height: 32px"><span class="vc_empty_space_inner"></span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div><!-- .entry-content -->
+                        </article>
+
+                    </div><!-- </.content> -->
+                </div><!-- </.content_wrap> -->
+            </div><!-- </.page_content_wrap> -->
+            <!-- /.footer_wrap -->
+        </div><!-- /.page_wrap -->
+    </div><!-- /.body_wrap -->
+
+    <script type="text/javascript" src="~/Content/simulation/js/scripts.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/swiper.jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        /* ]]> */
+    </script>
+
+    <script type="text/javascript" src="~/Content/simulation/js/front.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/script.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/superfish.js"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="~/Content/simulation/js/__scripts.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/wp-mediaelement.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/wp-embed.min.js"></script>
+    <script type="text/javascript" src="~/Content/simulation/js/js_composer_front.min.js"></script>
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        //var mc4wp_forms_config = [];
+        /* ]]> */
+    </script>
+    <script type="text/javascript" src="~/Content/simulation/js/forms-api.min.js"></script>
+    @RenderBody()
+    <script type="text/javascript" src="~/Content/nivo-slider/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+        //$(window).load(function () {
+        //    $('#slider').nivoSlider();
+
+
+        //});
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+
+                animSpeed: 4000,                   // Slide transition speed
+                pauseTime: 9000,                  // How long each slide will show
+                controlNav: false,                // 1,2,3... navigation
+
+            });
+        });
+    </script>
+    <a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up inited sc_button_hover_slide_left" title="Scroll to top"></a>
+</body>
+</html>

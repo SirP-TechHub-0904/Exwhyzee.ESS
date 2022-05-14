@@ -1,0 +1,75 @@
+﻿@model Exwhyzee.ESS.Models.UserProfile.UserProfileModel
+
+@{
+    ViewBag.Title = "AdminReview";
+}
+
+
+
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-8">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Update User Profile</h3>
+                    @TempData["error"]
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    if (Model != null)
+                    {
+                        <div class="box-body">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+
+                            @Html.HiddenFor(model => model.UserId)
+
+                            <div class="form-group">
+                                @Html.Label("Show Teacher", htmlAttributes: new { @class = "control-label " })
+                                <div class="">
+                                    @Html.CheckBoxFor(model => model.ShowTeacher)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Approve Teacher", htmlAttributes: new { @class = "control-label" })
+                                <div class="">
+                                    @Html.EnumDropDownListFor(model => model.AdminApproval, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.AdminReview, htmlAttributes: new { @class = "control-label " })
+                                <div class="">
+                                    <textarea class="form-control" name="AdminReview">@Model.AdminReview</textarea>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a href="@Url.Action("Index", "UserManager")" class="btn btn-default">Back to List</a>
+                        </div>
+                    }
+                    else {
+            <div class="alert alert-warning">
+                <strong>Warning!</strong> Profile not found
+            </div>
+                    }
+                }
+            </div>
+
+        </div>
+      
+
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,287 @@
+﻿
+@{
+    ViewBag.Title = "LiveList";
+}
+@using Exwhyzee.ESS.Areas.Service;
+@using Microsoft.AspNet.Identity
+@model IEnumerable<Exwhyzee.ESS.Models.Entities.OnlineZoom>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> Online Class</h3>
+
+
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                @if (GeneralService.ZoomEnable() == true)
+                {
+                    <table id="example1" class="table table-bordered table-hover" border="1">
+
+                        <thead>
+                            <tr>
+                                <th>S/N</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.LiveClassLevel.Name)
+                                </th>
+                                <th>
+                                    Subject Name
+                                </th>
+                                <th>Records</th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ClassDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ClassTime)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Duration)
+                                </th>
+                                <th>
+                                    Teacher Name
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                int sno = 0;
+                            }
+                            @foreach (var item in Model.OrderByDescending(x => x.DateCreated))
+                            {
+
+                                <tr>
+                                    <td>
+                                        @{ sno++; }
+                                        @sno
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.LiveClassLevel.Name)
+                                    </td>
+                                    <td>
+                                        @if (ViewBag.class1.EnableLiveClass == true)
+                                        {
+                                            if (GeneralService.SubscriptionCheck1() == null)
+                                            {
+
+                                                <a href="@Url.Action("DetailsLive", "OnlineClass", new { area = "Student", id = item.MeetingId })">
+                                                    @item.LiveClassSubject.Subject (click for details)
+                                                </a>
+                                            }
+
+                                            else if (ViewBag.sub == null)
+                                            {
+                                                <a href="#studentModal2" data-toggle="modal" data-target="#studentModal2">
+                                                    @item.LiveClassSubject.Subject (click for details)
+                                                </a>
+                                            }
+
+                                            else if (ViewBag.sub.EndDate > DateTime.UtcNow.Date)
+                                            {
+                                                <a href="@Url.Action("DetailsLive", "OnlineClass", new { area = "Student", id = item.MeetingId })">
+                                                    @item.LiveClassSubject.Subject (click for details)
+                                                </a>
+                                            }
+
+                                            else if (ViewBag.sub.EndDate < DateTime.UtcNow.Date)
+                                            {
+                                                <a href="#studentModal2" data-toggle="modal" data-target="#studentModal2">
+                                                    @item.LiveClassSubject.Subject (click for details)
+                                                </a>
+                                            }
+
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (ViewBag.class1.EnableLiveClass)
+                                        {
+                                            if (GeneralService.SubscriptionCheck1() == null)
+                                            {
+                                                if (!String.IsNullOrEmpty(item.MeetingUUId))
+                                                {
+                                                    @Html.ActionLink("View Record", "LiveClassRecord", new { id = item.MeetingUUId }, null)
+                                                }
+                                                else
+                                                {
+                                                    <a href="#studentModal1" data-toggle="modal" data-target="#studentModal1">
+                                                        View Record
+                                                    </a>
+                                                }
+                                            }
+
+                                            else if (ViewBag.sub == null)
+                                            {
+                                                <a href="#studentModal2" data-toggle="modal" data-target="#studentModal2">
+                                                    @item.LiveClassSubject.Subject (click for details)
+                                                </a>
+                                            }
+
+                                            else if (ViewBag.sub.EndDate > DateTime.UtcNow.Date)
+                                            {
+                                                if (!String.IsNullOrEmpty(item.MeetingUUId))
+                                                {
+                                                    @Html.ActionLink("View Record", "LiveClassRecord", new { id = item.MeetingUUId }, null)
+                                                }
+                                                else
+                                                {
+                                                    <a data-toggle="modal" data-target="#studentModal">
+                                                        View Record
+                                                    </a>
+                                                }
+                                            }
+
+                                            else if (ViewBag.sub.EndDate < DateTime.UtcNow.Date)
+                                            {
+                                                <a data-toggle="modal" data-target="#studentModal2">
+                                                    @item.LiveClassSubject.Subject (click for details)
+                                                </a>
+                                            }
+                                        }
+
+
+                                    </td>
+
+                                    <td>
+
+                                        @Html.DisplayFor(modelItem => item.ClassDate)
+
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClassTime)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Duration) min
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.User.SurName)
+                                        @Html.DisplayFor(modelItem => item.User.FirstName)
+                                        @Html.DisplayFor(modelItem => item.User.LastName)
+                                    </td>
+
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+
+                }
+                else
+                {
+                    <div class="alert alert-danger alert-dismissible">
+                        <h4><i class="icon fa fa-ban"></i> Online Learning not enabled.</h4>
+
+                    </div>
+                }
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+<div id="studentModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Access Denied</h4>
+            </div>
+            <div class="modal-body">
+                <p>Dear @ViewBag.data.SurName, you have not meet the requirement to access the live class. Kindly<a href="#studentModal2" data-toggle="modal" data-target="#studentModal2" class="btn btn-danger"> Subscribe </a> to join the class</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<div id="studentModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Access Denied</h4>
+            </div>
+            <div class="modal-body">
+                <p>Not available</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="studentModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Subscription</h4>
+            </div>
+
+          
+        <div class="modal-body">
+            <p>Dear @ViewBag.data.SurName, you do not have subscription to access the live class.
+        </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <a href="@Url.Action("Subscribe","Payment",new { area = "Finances"})" class="btn btn-primary">Subscribe Now</a>
+                </div>
+        
+        </div>
+
+    </div>
+</div>
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+    <script type="text/JavaScript">
+        //courtesy of BoogieJack.com
+        function killCopy(e) {
+            return false
+        }
+        function reEnable() {
+            return true
+        }
+        document.onselectstart = new Function("return false")
+        if (window.sidebar) {
+            document.onmousedown = killCopy
+            document.onclick = reEnable
+        }
+    </script>
+}
+
+

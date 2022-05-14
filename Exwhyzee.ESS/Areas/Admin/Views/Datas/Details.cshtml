@@ -1,0 +1,194 @@
+﻿@model Exwhyzee.ESS.Models.Entities.SchoolPortalData
+
+@{
+                /**/
+
+                ViewBag.Title = "Details";
+}
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">School Details</h3>
+
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>@TempData["error"]</strong>
+                    </div>
+                }
+            </div>
+          
+                <div class="box-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SiteName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SiteName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SchoolName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SchoolName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SchoolAddress)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SchoolAddress)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SchoolCurrentPrincipal)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SchoolCurrentPrincipal)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ClassCount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ClassCount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.EnrolStudentsCount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.EnrolStudentsCount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.UnEnrolStudentsCount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.UnEnrolStudentsCount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TotalStudentsCount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TotalStudentsCount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PortalUrl)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PortalUrl)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.WebUrl)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.WebUrl)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DateCeated)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DateCeated)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.LastModifiedDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.LastModifiedDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Usedcard)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Usedcard)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.NonUsedcard)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.NonUsedcard)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Totalcard)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Totalcard)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TotalStaff)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.TotalStaff)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.CurrentSession)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.CurrentSession)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Session)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Session)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Term)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Term)
+                        </dd>
+
+                    </dl>
+                </div>
+             
+
+        <div class="box-footer">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" }) 
+            <a href="javascript: history.back()" class="btn btn-default">Cancel</a>
+        </div>
+
+        
+        </div>
+
+    </div>
+    <div class="col-md-3"></div>
+
+    </div>
+

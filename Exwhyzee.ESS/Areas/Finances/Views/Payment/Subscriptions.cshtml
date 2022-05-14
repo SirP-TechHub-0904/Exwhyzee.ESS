@@ -1,0 +1,164 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.Subscription>
+
+@{
+    ViewBag.Title = "Subscriptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i>Subscriptions</h3>
+
+                @*<div class="box-tools">
+                    @Html.ActionLink("Subscribe", "PayNow", null, new { @class = "btn btn-primary", style = "padding: 7px;" })
+                </div>*@
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        @TempData["success"]
+                    </div>
+                }
+
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        @TempData["error"]
+                    </div>
+                }
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover" border="1">
+
+                    <thead>
+                        <tr class="bg-primary">
+                            <th>S/N</th>
+                            <th>Ref No</th>
+                            <th>
+                                Title
+                            </th>
+                            <th>Email</th>
+                            <th>Amount</th>
+                            <th>Name</th>
+
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Approve By
+                            </th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sno = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @{ sno++; }
+                                @sno
+                            </td>
+                            <td>
+                                @item.ReferenceId
+                            </td>
+                            <td>
+                                @item.Name
+
+                            </td>
+                            <td>@item.Email</td>
+
+                            <td>@item.Amount</td>
+
+                            <td>@item.User.SurName @item.User.FirstName @item.User.LastName</td>
+
+
+                            <td>@item.StartDate.ToString("dd-MMM-yyyy hh:mm:tt")</td>
+
+                            <td>
+                                @item.EndDate.ToString("dd-MMM-yyyy hh:mm:tt")
+                            </td>
+
+                            <td>
+                                @item.Status
+                            </td>
+                            @if(item.Source == Exwhyzee.ESS.Models.Entities.SubscriptionSource.Bank)
+                            {
+                                <td>@item.ApprovedBy.FullName</td>
+                            }
+                            else
+                            {
+                                <td>Online</td>
+                            }
+
+                            <td>
+
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Action
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li class="text-color-warning">@Html.ActionLink("Details", "AdminSubDetails", new { id = item.Id }, null)</li>
+
+                                    </ul>
+                                </div>
+
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+
+
+

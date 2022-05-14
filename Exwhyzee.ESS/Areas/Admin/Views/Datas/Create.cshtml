@@ -1,0 +1,77 @@
+﻿@model Exwhyzee.ESS.Models.Entities.SchoolPortalData
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <!-- left column -->
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">New School</h3>
+
+                @if (TempData["error"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>@TempData["error"]</strong>
+                    </div>
+                }
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+            <div class="box-body">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.Label("Site Name", htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.SiteName, new { htmlAttributes = new { @class = "form-control", id = "levelclass", placeholder = "" } })
+                        @Html.ValidationMessageFor(model => model.SiteName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Portal Url", htmlAttributes: new { @class = "control-label" })
+                    <div class="">
+                        @Html.EditorFor(model => model.PortalUrl, new { htmlAttributes = new { @class = "form-control", id = "levelclass", placeholder = "" } })
+                        @Html.ValidationMessageFor(model => model.PortalUrl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <a href="javascript: history.back()" class="btn btn-default">Cancel</a>
+                </div>
+
+            }
+        </div>
+
+    </div>
+    <div class="col-md-3"></div>
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+    //function checkInp() {
+    //    let ss =
+    //    var x = document.forms["myForm"]["age"].value;
+    //    if (x consists of any letters) // this is the code I need to change
+    //    {
+    //        alert("Must input numbers");
+    //        return false;
+    //    }
+    //}
+
+
+    </script>
+
+}

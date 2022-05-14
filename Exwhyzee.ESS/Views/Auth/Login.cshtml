@@ -1,0 +1,85 @@
+﻿@using Exwhyzee.ESS.Models
+@model LoginViewModel
+
+@{
+    /**/
+
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Login.cshtml";
+
+}
+
+@if (TempData["error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+        @TempData["error"]
+    </div>
+}
+@using (Html.BeginForm("Login", "Auth", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", id = "logon" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group has-feedback">
+        <input type="email" name="Email" class="form-control" placeholder="Email">
+
+        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="input-group">
+        <input id="password" name="Password" type="password" class="form-control" placeholder="password">
+        <span class="input-group-btn">
+            <button id="show_password" class="btn btn-secondary" type="button">
+                <span class="glyphicon glyphicon-eye-open"></span>
+            </button>
+        </span>
+        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="checkbox icheck">
+                <label>
+                    <input type="checkbox" name="RememberMe"> Remember Me
+                </label>
+            </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat" onclick="">Sign In</button>
+        </div>
+        <!-- /.col -->
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-xs-12">
+           <p>Dont have an Account? <a href="@Url.Action("CreateAccount")">Create New Account</a></p>
+        </div>
+        <!-- /.col -->
+      
+        <!-- /.col -->
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('#show_password').hover(function functionName() {
+            //Change the attribute to text
+            $('#password').attr('type', 'text');
+            $('.glyphicon').removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
+        }, function () {
+            //Change the attribute back to password
+            $('#password').attr('type', 'password');
+            $('.glyphicon').removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
+        }
+        );
+    </script>
+    <script>
+        $('form').submit(function () {
+            $(this).find("button[type='submit']").prop('disabled', true);
+        });
+    </script>
+}

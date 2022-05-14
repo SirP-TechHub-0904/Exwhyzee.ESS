@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.CatogoryGame>
+
+@foreach (var m in Model)
+{
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-gamepad"></i> <span> @m.Title Games</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            @Html.Action("_GameSubMenu", "Initializer", new { area = "Games", id = m.Id })
+
+        </ul>
+    </li>
+
+}

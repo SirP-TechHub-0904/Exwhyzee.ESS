@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.ImageSlider>
+
+@foreach (var item in Model)
+{
+    if (item.Content != null)
+    {
+    <a href="@item.Link">
+        <img src="data:image/jpg;base64,@(Convert.ToBase64String(item.Content))" data-thumb="data:image/jpg;base64,@(Convert.ToBase64String(item.Content))" alt="" />
+    </a>
+    }
+}

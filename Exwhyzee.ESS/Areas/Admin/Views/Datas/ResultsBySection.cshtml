@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Areas.Admin.Controllers.ResultList>
+
+@{
+    ViewBag.Title = "ResultsBySection";
+}
+
+<h2>Results for @ViewBag.ses</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Session)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.School)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Result)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Session)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.School)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+       
+    </tr>
+}
+
+</table>

@@ -1,0 +1,380 @@
+﻿<html lang="en" class="">
+<head>
+    <title>iSKOOLS | NO_1 School Management Software</title>
+    <link rel="icon" href="~/Content/Assest/images/icon_iskool.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- LIBRARY FONT-->
+    <meta property="og:title" content="iSKOOLS | NO_1 School Management Software">
+    <meta property="og:image" content="http://iskools.com/Content/Assest/images/iskool-logo.png">
+    <meta property="og:description" content="Your School Is Our Priority">
+    <meta property="og:url" content="http://iskools.com/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400italic,700,900,300">
+    @*<link type="text/css" rel="stylesheet" href="~/Content/Assest/css/fontawesome/css/font-awesome.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/Glyphter.css">
+    <!-- LIBRARY CSS-->
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/animate.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/bootstrap.css">
+    <link href="~/Content/Assest/carousel/dist/assets/owl.carousel.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/jquery.selectbox.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/jquery.fancybox.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/jquery.fancybox-buttons.css">
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/mediaelementplayer.min.css">
+    <!-- STYLE CSS    --><!--link(type="text/css", rel='stylesheet', href='assets/css/color-1.css', id="color-skins")-->
+    <link type="text/css" rel="stylesheet" href="~/Content/Assest/css/color-1.css" id="color-skins">
+    <script src="~/Content/Assest/js/jquery-2.1.4.min.js"></script>
+    <script src="assets/libs/js-cookie/js.cookie.js"></script>
+    <script>
+        if ((Cookies.get('color-skin') != undefined) && (Cookies.get('color-skin') != 'color-1')) {
+            $('#color-skins').attr('href', '~/Content/Assest/css/' + Cookies.get('color-skin') + '.css');
+        } else if ((Cookies.get('color-skin') == undefined) || (Cookies.get('color-skin') == 'color-1')) {
+            $('#color-skins').attr('href', '~/Content/Assest/css/color-1.css');
+        }
+
+
+    </script>
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <style type="text/css">
+        .fancybox-margin {
+            margin-right: 17px;
+        }
+
+        .carousel-control .fa {
+            margin-top: 28%;
+        }
+
+        .edugate-layout-2 .edugate-image {
+            width: 100px;
+            height: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7ZBWC5NBEQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7ZBWC5NBEQ');
+    </script>
+    <!-- HEADER-->
+    <header>
+        <div class="header-topbar">
+            <div class="container">
+                <div class="topbar-left pull-left">
+                    <div class="email"><a href="#"><i class="topbar-icon fa fa-envelope-o"></i><span>iskoolsportal@gmail.com</span></a></div>
+                    <div class="hotline"><a href="#"><i class="topbar-icon fa fa-phone"></i><span>+234 806 800 2023</span></a></div>
+                </div>
+                <div class="topbar-right pull-right">
+                    <div class="socials"><a href="#" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i class="fa fa-google-plus"></i></a><a href="#" class="twitter"><i class="fa fa-twitter"></i></a><a href="#" class="pinterest"><i class="fa fa-pinterest"></i></a><a href="#" class="blog"><i class="fa fa-rss"></i></a><a href="#" class="dribbble"><i class="fa fa-dribbble"></i></a></div>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </div>
+        </div>
+        <div class="header-main homepage-01">
+            <div class="container">
+                <div class="header-main-wrapper">
+                    <div class="navbar-heade">
+                        <div class="logo pull-left"><a href="/" class="header-logo"><img src="~/Content/Assest/images/iskool-logo.png" alt=""></a></div>
+                        <button type="button" data-toggle="collapse" data-target=".navigation" class="navbar-toggle edugate-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    </div>
+                    <nav class="navigation collapse navbar-collapse pull-right" style="max-height: 431px;">
+                        <ul class="nav-links nav navbar-nav">
+
+                            <li><a href="/" class="main-menu">Home</a></li>
+                            <li><a href="@Url.Action("About", "Iskools")" class="main-menu">About Us</a></li>
+                            <li><a href="#" class="main-menu">Pricing</a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Features<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="@Url.Action("Features", "Iskools")" class="link-page">Features</a></li>
+                                    <li><a href="@Url.Action("Benefits", "Iskools")" class="link-page">Benefits</a></li>
+                                    <li><a href="#" class="link-page">Referral</a></li>
+                                    <li><a href="#" class="link-page">FAQs</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="main-menu">Resources<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                    <li><a href="#" class="link-page">School Portal Management Software</a></li>
+                                    <li><a href="#" class="link-page">C B T Software</a></li>
+                                    <li><a href="#" class="link-page">Emulators Softwares</a></li>
+                                    <li><a href="#" class="link-page">Demo Portal</a></li>
+                                </ul>
+                            </li>
+
+
+                            <li><a href="@Url.Action("Contact", "Iskools")" class="main-menu">Contact</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- WRAPPER-->
+    @RenderBody()
+    <div class="section slider-logo">
+        <div class="container">
+            <div class="slider-logo-wrapper">
+                <div class="slider-logo-content">
+                    <div class="carousel-logos owl-carousel owl-theme owl-responsive-1025 owl-loaded">
+
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage" style="transform: translate3d(-2928.34px, 0px, 0px); transition: all 1.5s ease 0s; width: 5020.01px;">
+                                <div class="owl-item" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/ibinex_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/xyz_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item active" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/bulksms_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item active" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/ibinex_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item active" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/xyz_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item active" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/bulksms_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item active" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/ibinex_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item active" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/xyz_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/bulksms_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/ibinex_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="owl-item" style="width: 94.167px; margin-right: 115px;">
+                                    <div class="logo-iteam item">
+                                        <a href="#">
+                                            <img src="~/Content/Assest/images/xyz_icon.png" alt="" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="owl-controls">
+                            <div class="owl-nav"><div class="owl-prev" style="display: none;">prev</div><div class="owl-next" style="display: none;">next</div></div><div class="owl-dots" style="">
+                                <div class="owl-dot"><span></span></div><div class="owl-dot active">
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER-->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-top-wrapper">
+                    <div class="footer-top-left">
+                        <p class="footer-top-focus">BECOME AN ISKOOL CERTIFIED</p>
+
+                        <p class="footer-top-text">Join lots of certified iskool professional and earn money hassle free!</p>
+                    </div>
+                    <div class="footer-top-right">
+                        <a href="#" class="btn btn-blue btn-bold"><span>GET STARTED NOW</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-main">
+            <div class="container">
+                <div class="footer-main-wrapper">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="edugate-widget widget">
+                                    <div class="title-widget">ISKOOLS</div>
+                                    <div class="content-widget">
+                                        <p>Iskools is a great start for any school, college or institutions to run all their academic affairs.</p>
+
+                                        <div class="info-list">
+                                            <ul class="list-unstyled">
+                                                <li><i class="fa fa-envelope-o"></i><a href="#">iskoolsportal@gmail.com</a></li>
+                                                <li><i class="fa fa-phone"></i><a href="#">P: +234 806 568 0904</a></li>
+                                                <li>
+                                                    <i class="fa fa-map-marker"></i><a href="#">
+                                                        <p>No. 44 Azikiwe Road</p>
+                                                        <p>Nigeria  </p>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="useful-link-widget widget">
+                                    <div class="title-widget">USEFUL LINKS</div>
+                                    <div class="content-widget">
+                                        <div class="useful-link-list">
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <ul class="list-unstyled">
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Teachers</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Courses</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Support</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Why Edugate</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Social Media</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Site Map</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="useful-link-widget widget">
+                                    <div class="title-widget">UPDATE LINKS</div>
+                                    <div class="content-widget">
+                                        <div class="useful-link-list">
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <ul class="list-unstyled">
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Latest Update and features</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Customer Testimony</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">FAQs</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Awards & Recognitions</a></li>
+                                                        <li><i class="fa fa-angle-right"></i><a href="#">Site Map</a></li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-6 sd380">
+                                <div class="mailing-widget widget">
+                                    <div class="title-widget">MAILING</div>
+                                    <div class="content-wiget">
+                                        <p>Sign up for our mailing list to get latest updates and offers.</p>
+
+                                        <form action="">
+                                            <div class="input-group"><input type="text" placeholder="Email address" class="form-control form-email-widget"><span class="input-group-btn"><input type="submit" value="✓" class="btn btn-email"></span></div>
+                                        </form>
+                                        <p>We respect your privacy</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hyperlink">
+                    © Copyrights 2019. All Rights Reserved. Powered by Exwhyzee Technologies Ltd.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- THEME SETTING-->
+    <!-- LOADING-->
+    <div class="body-2 loaded" style="width: 1349px; height: 603px;">
+        <div class="dots-loader"></div>
+    </div>
+    <!-- JAVASCRIPT LIBS-->
+
+    <script>
+        if ((Cookies.get('color-skin') != undefined) && (Cookies.get('color-skin') != 'color-1')) {
+            $('.logo .header-logo img').attr('src', '~/Content/Assest/images-' + Cookies.get('color-skin') + '.png');
+        } else if ((Cookies.get('color-skin') == undefined) || (Cookies.get('color-skin') == 'color-1')) {
+            $('.logo .header-logo img').attr('src', '~/Content/Assest/images-color-1.png');
+        }</script>
+    <script src="~/Content/Assest/js/bootstrap.min.js"></script>
+    <script src="~/Content/Assest/js/jquery-smoothscroll.js"></script>
+    <script src="~/Content/Assest/carousel/dist/owl.carousel.min.js"></script>
+    <script src="~/Content/Assest/js/jquery.appear.js"></script>
+    <script src="~/Content/Assest/js/jquery.countTo.js"></script>
+    <script src="~/Content/Assest/js/wow.min.js"></script>
+    <script src="~/Content/Assest/js/jquery.selectbox-0.2.min.js"></script>
+    <script src="~/Content/Assest/js/jquery.fancybox.js"></script>
+    <script src="~/Content/Assest/js/jquery.fancybox-buttons.js"></script>
+    <!-- MAIN JS-->
+    <script src="~/Content/Assest/js/main.js"></script>
+    <!-- LOADING SCRIPTS FOR PAGE-->
+    <script src="~/Content/Assest/js/isotope.pkgd.min.js"></script>
+    <script src="~/Content/Assest/js/fit-columns.js"></script>
+    <script src="~/Content/Assest/js/homepage.js"></script>
+    <script type="text/javascript" src="~/Content/nivo-slider/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+        //$(window).load(function () {
+        //    $('#slider').nivoSlider();
+
+
+        //});
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+
+                animSpeed: 4000,                   // Slide transition speed
+                pauseTime: 9000,                  // How long each slide will show
+                controlNav: false,                // 1,2,3... navigation
+
+            });
+        });
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

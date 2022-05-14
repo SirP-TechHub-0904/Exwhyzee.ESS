@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SimulationLayout.cshtml";
+}
+<style>
+    .full-screen-preview__frame {
+        width: 100%;
+        background-color: white;
+    }
+</style>
+
+<iframe class="full-screen-preview__frame" src="@Url.Action("IFrameView", "Initializer", new { area = "Simulations" })" name="preview-frame" frameborder="0" noresize="noresize" data-view="fullScreenPreview" allow="geolocation 'self'; autoplay 'self'" style="height: 1700px;overflow-y:hidden;"></iframe>
+
+
+
