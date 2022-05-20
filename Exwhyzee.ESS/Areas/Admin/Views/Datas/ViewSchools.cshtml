@@ -1,0 +1,154 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.Entities.SchoolPortalData>
+
+@{
+    ViewBag.Title = "ViewSchools";
+    Layout = "~/Views/Shared/_Dashboard.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> @TempData["title"] Management</h3>
+
+
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover" border="1">
+
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+                            <th>Type</th>
+                            <th>
+                                School Name
+                            </th>
+                            <th>Phone Number</th>
+                            <th>Type</th>
+                            <th>Enrolled</th>
+                            <th>Frontend Url</th>
+                            <th>Portal Url</th>
+
+                            <th>Current Session</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int sno = 0;
+                        }
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @{ sno++; }
+                                    @sno
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AddAsActive)
+                                </td>
+
+                                <td>
+                                    <a target="_blank" href="@item.PortalUrl">
+                                        @Html.DisplayFor(modelItem => item.SchoolName)
+                                    </a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ContactPhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SchoolType)
+                                </td>
+
+                                <td>
+                                    @if (item.EnrolStudentsCount != null)
+                                    {
+                                        @item.EnrolStudentsCount
+
+                                    }
+                                    else
+                                    {
+                                        @item.EnrolStudentsCount
+                                    }
+                                </td>
+                                <td>
+                                    <a target="_blank" href="http://@item.WebUrl">
+                                        @Html.DisplayFor(modelItem => item.WebUrl)
+                                    </a>
+                                </td>
+                                <td>
+                                    <a target="_blank" href="@item.PortalUrl">
+
+                                        @Html.DisplayFor(modelItem => item.PortalUrl)
+                                    </a>
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CurrentSession)
+                                </td>
+
+                                <td>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                                            Action
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+
+                                            <li>@Html.ActionLink("Add As Active", "AddToList", new { id = item.Id })</li>
+                                            <li>@Html.ActionLink("Add Number", "AddNumber", new { id = item.Id })</li>
+                                            <li>@Html.ActionLink("Details", "Details", new { id = item.Id })</li>
+                                            <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+                                            <li>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
+                                            <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
+                                            <li> @Html.ActionLink("Refresh", "RefreshSingleSchool", new { url = item.PortalUrl })</li>
+                                            <li>@Html.ActionLink("sessions", "SchoolSessions", new { url = item.PortalUrl })</li>
+                                        </ul>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
+
+
+
+
+@section Style {
+
+    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+}
+
+@section Scripts {
+    <!-- DataTables -->
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+}
+
+@section Scripts2 {
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
+}
+

@@ -618,6 +618,38 @@ namespace Exwhyzee.ESS.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult ChangeResetPassword()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/ResetPassword
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeResetPassword(ResetPasswordViewModel model)
+        {
+           
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user == null)
+            {
+                // Don't reveal that the user does not exist
+                return RedirectToAction("ResetPasswordConfirmation", "Account");
+            }
+            var result = await UserManager.RemovePasswordAsync(user.Id);
+            if (result.Succeeded)
+            {
+                var resultx = await UserManager.AddPasswordAsync(user.Id, model.Password);
+                if (resultx.Succeeded)
+                {
+                    return RedirectToAction("ResetPasswordConfirmation", "Account");
+                }
+            }
+            AddErrors(result);
+            return View();
+        }
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Exwhyzee.ESS.Models.SchoolCategory>
+
+@{
+    ViewBag.Title = "Category";
+}
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box" style="padding:7px;">
+            <div class="box-header" style="margin-bottom:15px;">
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> School Section Management</h3>
+
+                
+                @if (TempData["success"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+                        @TempData["success"]
+                    </div>
+                }
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover" border="1">
+
+                    <thead>
+                        <tr>
+                            <th>S/N</th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>Schools</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    @{ int sn = 0;}
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @{ sn++;}
+                                @sn
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @item.SchoolPortalDatas.Count()
+                            </td>
+                            <td>
+                                @Html.ActionLink("View Schools", "ViewSchools", new { id = item.Id }, new { @class = "btn btn-primary" })
+
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>            </div>            </div></div>

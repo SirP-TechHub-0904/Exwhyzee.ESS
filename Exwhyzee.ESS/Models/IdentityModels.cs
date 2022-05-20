@@ -121,6 +121,7 @@ namespace Exwhyzee.ESS.Models
         public DbSet<SubscriptionCommision> SubscriptionCommision { get; set; }
         public DbSet<TeacherEvaluation> TeacherEvaluation { get; set; }
         public DbSet<SchoolSession> SchoolSessions { get; set; }
+        public DbSet<SchoolCategory> SchoolCategories { get; set; }
 
         public static ApplicationDbContext Create()
         {

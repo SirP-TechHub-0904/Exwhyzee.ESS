@@ -76,6 +76,10 @@ namespace Exwhyzee.ESS.Models.Entities
         [Display(Name = "Contact Phone")]
         public string ContactPhoneNumber { get; set; }
         public bool AddAsActive { get; set; }
+        public bool SelectedAsActive { get; set; }
+        public DateTime DateAdded { get; set; }
 
+        public int? SchoolCategoryId { get; set; }
+        public SchoolCategory SchoolCategory { get; set; }
     }
 }

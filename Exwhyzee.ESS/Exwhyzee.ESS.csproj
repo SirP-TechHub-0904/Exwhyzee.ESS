@@ -227,6 +227,7 @@
     <Compile Include="Areas\Admin\Controllers\OnlineClassController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DatasController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SchoolCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SchoolsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SchoolSessionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SMSSettingsController.cs" />
@@ -530,6 +531,18 @@
     <Compile Include="Migrations\202106161948516_dfghjkl.Designer.cs">
       <DependentUpon>202106161948516_dfghjkl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205182307094_65748374h7.cs" />
+    <Compile Include="Migrations\202205182307094_65748374h7.Designer.cs">
+      <DependentUpon>202205182307094_65748374h7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205182311441_65748374h7gf.cs" />
+    <Compile Include="Migrations\202205182311441_65748374h7gf.Designer.cs">
+      <DependentUpon>202205182311441_65748374h7gf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205190843573_65748374h7gfd.cs" />
+    <Compile Include="Migrations\202205190843573_65748374h7gfd.Designer.cs">
+      <DependentUpon>202205190843573_65748374h7gfd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\AdminViewModel.cs" />
@@ -626,6 +639,7 @@
     <Compile Include="Models\Profile\UserReview.cs" />
     <Compile Include="Models\Profile\WorkHistoryModel.cs" />
     <Compile Include="Models\QuestionMain.cs" />
+    <Compile Include="Models\SchoolCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1555,6 +1569,15 @@
     <Content Include="Areas\Admin\Views\SchoolSessions\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\SchoolSessions\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\ResultsBySection.cshtml" />
+    <Content Include="Areas\Admin\Views\Datas\Category.cshtml" />
+    <Content Include="Areas\Admin\Views\SchoolCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SchoolCategories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SchoolCategories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SchoolCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SchoolCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Datas\ViewSchools.cshtml" />
+    <Content Include="Areas\Admin\Views\Datas\UpdateSchool.cshtml" />
+    <Content Include="Content\site44.PublishSettings" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
@@ -1651,6 +1674,7 @@
     <Content Include="Views\Shared\_StudentDashboard.cshtml" />
     <Content Include="Views\Auth\SubjectEnrollment.cshtml" />
     <Content Include="Views\Auth\Qualification.cshtml" />
+    <Content Include="Views\Auth\ChangeResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1862,6 +1886,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106161948516_dfghjkl.resx">
       <DependentUpon>202106161948516_dfghjkl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205182307094_65748374h7.resx">
+      <DependentUpon>202205182307094_65748374h7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205182311441_65748374h7gf.resx">
+      <DependentUpon>202205182311441_65748374h7gf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205190843573_65748374h7gfd.resx">
+      <DependentUpon>202205190843573_65748374h7gfd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

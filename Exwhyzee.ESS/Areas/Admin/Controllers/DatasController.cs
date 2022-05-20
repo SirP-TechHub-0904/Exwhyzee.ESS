@@ -33,6 +33,59 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
             var sch = await db.SchoolPortalDatas.OrderByDescending(x => x.SchoolName).ToListAsync();
             return View(sch);
         }
+        public async Task<ActionResult> ViewSchools(int id)
+        {
+
+            var sch = await db.SchoolPortalDatas.Where(x=>x.SelectedAsActive== true && x.SchoolCategoryId == id).OrderByDescending(x => x.SchoolName).ToListAsync();
+            var xtitle = await db.SchoolCategories.FirstOrDefaultAsync(x=>x.Id == id);
+            TempData["title"] = xtitle.Name;
+            return View(sch);
+        }
+
+        public async Task<ActionResult> UpdateSchool(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            SchoolPortalData schoolSession = await db.SchoolPortalDatas.FindAsync(id);
+            if (schoolSession == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.SchoolCategoryId = new SelectList(db.SchoolCategories, "Id", "Name");
+
+            return View(schoolSession);
+        }
+
+        // POST: Admin/SchoolSessions/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> UpdateSchool(SchoolPortalData schoolSession)
+        {
+            if (ModelState.IsValid)
+            {
+                SchoolPortalData x = await db.SchoolPortalDatas.FindAsync(schoolSession.Id);
+                x.DateAdded = DateTime.UtcNow.AddHours(1);
+                x.SchoolCategoryId = schoolSession.SchoolCategoryId;
+                x.SelectedAsActive = schoolSession.SelectedAsActive;
+                db.Entry(x).State = EntityState.Modified;
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewBag.SchoolCategoryId = new SelectList(db.SchoolCategories, "Id", "Name");
+
+            return View(schoolSession);
+        }
+
+        public async Task<ActionResult> Category()
+        {
+
+            var sch = await db.SchoolCategories.Include(x=>x.SchoolPortalDatas).ToListAsync();
+            return View(sch);
+        }
 
         public async Task<ActionResult> ResultDMMM(string session, string term)
         {
@@ -413,6 +466,8 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                 var check = db.SchoolPortalDatas.FirstOrDefault(x => x.PortalUrl.ToLower() == schoolPortalData.PortalUrl.ToLower());
                 if (check == null)
                 {
+                    schoolPortalData.DateAdded= DateTime.UtcNow.AddHours(1);
+                    schoolPortalData.LastModifiedDate= DateTime.UtcNow.AddHours(1);
                     schoolPortalData.DateCeated = DateTime.UtcNow.AddHours(1);
                     db.SchoolPortalDatas.Add(schoolPortalData);
                     await db.SaveChangesAsync();
