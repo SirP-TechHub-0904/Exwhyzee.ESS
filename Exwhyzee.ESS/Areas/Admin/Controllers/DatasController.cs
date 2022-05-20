@@ -499,7 +499,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,SiteName,SchoolName,SchoolAddress,SchoolCurrentPrincipal,ClassCount,EnrolStudentsCount,UnEnrolStudentsCount,TotalStudentsCount,PortalUrl,WebUrl,DateCeated,LastModifiedDate,Usedcard,NonUsedcard,Totalcard,TotalStaff,CurrentSession")] SchoolPortalData schoolPortalData)
+        public async Task<ActionResult> Edit(SchoolPortalData schoolPortalData)
         {
             if (ModelState.IsValid)
             {
