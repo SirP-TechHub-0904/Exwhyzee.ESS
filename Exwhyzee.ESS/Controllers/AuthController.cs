@@ -325,7 +325,7 @@ namespace Exwhyzee.ESS.Controllers
                     await UserManager.UpdateAsync(userinfo2);
 
                     await HelperClass.MainMail(user.Email, "welcome mail");
-                    await HelperClass.MainMailToAdmin("welcome mail http://iskools.com/Dashboard/Account/MyCV?email=" + model.Email);
+                    await HelperClass.MainMailToAdmin("welcome mail http://iskools.com.ng/Dashboard/Account/MyCV?email=" + model.Email);
 
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
@@ -410,7 +410,7 @@ namespace Exwhyzee.ESS.Controllers
                     await UserManager.UpdateAsync(userinfo2);
 
                     await HelperClass.MainMail(user.Email, "welcome mail");
-                    await HelperClass.MainMailToAdmin("welcome mail http://iskools.com/Student/Account/MyAccount?email=" + model.Email);
+                    await HelperClass.MainMailToAdmin("welcome mail http://iskools.com.ng/Student/Account/MyAccount?email=" + model.Email);
 
                     //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 

@@ -26,18 +26,143 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Admin/SchoolPortalDatas
-
         public async Task<ActionResult> Index()
         {
 
-            var sch = await db.SchoolPortalDatas.OrderByDescending(x => x.SchoolName).ToListAsync();
-            return View(sch);
+            var sch = db.SchoolPortalDatas.AsQueryable();
+
+            ViewBag.schools = await sch.CountAsync();
+            ViewBag.Primary = await sch.Where(x => x.SchoolType.ToLower().Contains("prim")).CountAsync();
+            ViewBag.AllPrimary = await sch.Where(x => x.SchoolType.ToLower().Contains("prim") && x.AddAsActive == true).CountAsync();
+            ViewBag.Secondary = await sch.Where(x => x.SchoolType.ToLower().Contains("second")).CountAsync();
+            ViewBag.AllSecondary = await sch.Where(x => x.SchoolType.ToLower().Contains("second") && x.AddAsActive == true).CountAsync();
+            ViewBag.Active = await sch.Where(x => x.AddAsActive == true).CountAsync();
+            ViewBag.Nonactive = await sch.Where(x => x.AddAsActive == false).CountAsync();
+
+            ViewBag.ActiveEnrolledStudents = sch
+        .Where(x => x.AddAsActive == true)
+        .Select(x => new
+        {
+            EnrolStudentsCount = x.EnrolStudentsCount
+        })
+        .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+        .Sum(x => int.TryParse(x.EnrolStudentsCount, out int count) ? count : 0);
+
+            ViewBag.NonUsedcard = sch
+       .Where(x => x.AddAsActive == true)
+       .Select(x => new
+       {
+           NonUsedcard = x.NonUsedcard
+       })
+       .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+       .Sum(x => int.TryParse(x.NonUsedcard, out int count) ? count : 0);
+
+            ViewBag.Totalcard = sch
+     .Where(x => x.AddAsActive == true)
+     .Select(x => new
+     {
+         Totalcard = x.Totalcard
+     })
+     .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+     .Sum(x => int.TryParse(x.Totalcard, out int count) ? count : 0);
+
+            ViewBag.Usedcard = sch
+       .Where(x => x.AddAsActive == true)
+       .Select(x => new
+       {
+           Usedcard = x.Usedcard
+       })
+       .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+       .Sum(x => int.TryParse(x.Usedcard, out int count) ? count : 0);
+
+            ViewBag.TotalStaff = sch
+       .Where(x => x.AddAsActive == true)
+       .Select(x => new
+       {
+           TotalStaff = x.TotalStaff
+       })
+       .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+       .Sum(x => int.TryParse(x.TotalStaff, out int count) ? count : 0);
+
+
+
+            return View();
+        }
+        public async Task<ActionResult> Schools(int id = 0, bool active = true, string typex = null)
+        {
+
+            var sch = db.SchoolPortalDatas.OrderByDescending(x => x.SchoolName).Where(x => x.AddAsActive == active).AsQueryable();
+            if (typex != null)
+            {
+                sch = sch.Where(x => x.SchoolType.ToLower().Contains(typex)).AsQueryable();
+            }
+            if (id > 0)
+            {
+                sch = sch.Where(x => x.SchoolCategoryId == id).AsQueryable();
+            }
+
+                ViewBag.schools = await sch.CountAsync();
+            ViewBag.Primary = await sch.Where(x => x.SchoolType.ToLower().Contains("prim")).CountAsync();
+            ViewBag.AllPrimary = await sch.Where(x => x.SchoolType.ToLower().Contains("prim") && x.AddAsActive == true).CountAsync();
+            ViewBag.Secondary = await sch.Where(x => x.SchoolType.ToLower().Contains("second")).CountAsync();
+            ViewBag.AllSecondary = await sch.Where(x => x.SchoolType.ToLower().Contains("second") && x.AddAsActive == true).CountAsync();
+            ViewBag.Active = await sch.Where(x => x.AddAsActive == true).CountAsync();
+            ViewBag.Nonactive = await sch.Where(x => x.AddAsActive == false).CountAsync();
+
+            ViewBag.ActiveEnrolledStudents = sch
+        .Where(x => x.AddAsActive == true)
+        .Select(x => new
+        {
+            EnrolStudentsCount = x.EnrolStudentsCount
+        })
+        .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+        .Sum(x => int.TryParse(x.EnrolStudentsCount, out int count) ? count : 0);
+
+            ViewBag.NonUsedcard = sch
+       .Where(x => x.AddAsActive == true)
+       .Select(x => new
+       {
+           NonUsedcard = x.NonUsedcard
+       })
+       .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+       .Sum(x => int.TryParse(x.NonUsedcard, out int count) ? count : 0);
+
+            ViewBag.Totalcard = sch
+     .Where(x => x.AddAsActive == true)
+     .Select(x => new
+     {
+         Totalcard = x.Totalcard
+     })
+     .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+     .Sum(x => int.TryParse(x.Totalcard, out int count) ? count : 0);
+
+            ViewBag.Usedcard = sch
+       .Where(x => x.AddAsActive == true)
+       .Select(x => new
+       {
+           Usedcard = x.Usedcard
+       })
+       .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+       .Sum(x => int.TryParse(x.Usedcard, out int count) ? count : 0);
+
+            ViewBag.TotalStaff = sch
+       .Where(x => x.AddAsActive == true)
+       .Select(x => new
+       {
+           TotalStaff = x.TotalStaff
+       })
+       .AsEnumerable() // Switch to LINQ to Objects to use the Sum method
+       .Sum(x => int.TryParse(x.TotalStaff, out int count) ? count : 0);
+
+
+
+            return View(await sch.ToListAsync());
         }
         public async Task<ActionResult> ViewSchools(int id)
         {
 
-            var sch = await db.SchoolPortalDatas.Where(x=>x.SelectedAsActive== true && x.SchoolCategoryId == id).OrderByDescending(x => x.SchoolName).ToListAsync();
-            var xtitle = await db.SchoolCategories.FirstOrDefaultAsync(x=>x.Id == id);
+            var sch = await db.SchoolPortalDatas.Where(x => x.SelectedAsActive == true && x.SchoolCategoryId == id).OrderByDescending(x => x.SchoolName).ToListAsync();
+            var xtitle = await db.SchoolCategories.FirstOrDefaultAsync(x => x.Id == id);
             TempData["title"] = xtitle.Name;
             return View(sch);
         }
@@ -83,7 +208,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
         public async Task<ActionResult> Category()
         {
 
-            var sch = await db.SchoolCategories.Include(x=>x.SchoolPortalDatas).ToListAsync();
+            var sch = await db.SchoolCategories.Include(x => x.SchoolPortalDatas).ToListAsync();
             return View(sch);
         }
 
@@ -92,7 +217,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
             ViewBag.session = session;
             ViewBag.term = term;
 
-            var sch = await db.SchoolPortalDatas.Where(x=>x.EnrolStudentsCount != "0").Where(x => x.EnrolStudentsCount != null).OrderByDescending(x => x.SchoolName).ToListAsync();
+            var sch = await db.SchoolPortalDatas.Where(x => x.EnrolStudentsCount != "0").Where(x => x.EnrolStudentsCount != null).OrderByDescending(x => x.SchoolName).ToListAsync();
             return View(sch);
         }
         public async Task<ActionResult> SchoolsWithResult(string Term)
@@ -121,7 +246,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
         {
 
             var sch = await db.SchoolPortalDatas.FindAsync(id);
-            if(sch != null)
+            if (sch != null)
             {
                 sch.AddAsActive = true;
                 db.Entry(sch).State = EntityState.Modified;
@@ -141,7 +266,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
         {
             try
             {
-                var portals = await db.SchoolPortalDatas.ToListAsync();
+                var portals = await db.SchoolPortalDatas.Where(x=>x.AddAsActive == true).ToListAsync();
                 foreach (var item in portals)
                 {
                     try
@@ -207,7 +332,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<ActionResult>RefreshSingleSchool(string url)
+        public async Task<ActionResult> RefreshSingleSchool(string url)
         {
             try
             {
@@ -282,9 +407,9 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                 //var item = await db.SchoolPortalDatas.Where(x => x.AddAsActive == true).ToListAsync();
 
                 IQueryable<SchoolPortalData> itemlist = from s in db.SchoolPortalDatas
-                                                  
+
                    .Where(x => x.AddAsActive == true)
-                                                select s;
+                                                        select s;
 
 
                 IQueryable<ResultList> listProduct = Enumerable.Empty<ResultList>().AsQueryable();
@@ -294,10 +419,11 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                     ResultList ill = new ResultList();
                     try
                     {
-                       
+
                         string endurl = "/api/SchoolApi/GetAllResultsBySession";
                         string starturl = "http://";
                         string apiUrl = String.Format(starturl + item.PortalUrl.Replace("http://", "") + endurl);
+                        apiUrl = apiUrl.Replace("http://http://", "http://");
 
                         WebRequest requestObj = WebRequest.Create(apiUrl);
                         requestObj.Method = "GET";
@@ -318,17 +444,17 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                             ill.Session = ischools.Session;
                         }
                     }
-                    catch(Exception s)
+                    catch (Exception s)
                     {
 
                     }
-                    
+
                     alist.Add(ill);
                 }
 
 
 
-               
+
                 return View(alist.ToList());
             }
 
@@ -354,6 +480,8 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                 string endurl = "/api/SchoolApi/GetSchoolSessions";
                 string starturl = "http://";
                 string apiUrl = String.Format(starturl + item.PortalUrl + endurl);
+
+                apiUrl = apiUrl.Replace("http://http://", "http://");
 
                 WebRequest requestObj = WebRequest.Create(apiUrl);
                 requestObj.Method = "GET";
@@ -398,6 +526,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                 //:80/api/SchoolApi/GetSchoolSessions
                 string starturl = "http://";
                 string apiUrl = String.Format(starturl + item.PortalUrl + endurl);
+                apiUrl = apiUrl.Replace("http://http://", "http://");
 
                 WebRequest requestObj = WebRequest.Create(apiUrl);
                 requestObj.Method = "GET";
@@ -466,8 +595,8 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                 var check = db.SchoolPortalDatas.FirstOrDefault(x => x.PortalUrl.ToLower() == schoolPortalData.PortalUrl.ToLower());
                 if (check == null)
                 {
-                    schoolPortalData.DateAdded= DateTime.UtcNow.AddHours(1);
-                    schoolPortalData.LastModifiedDate= DateTime.UtcNow.AddHours(1);
+                    schoolPortalData.DateAdded = DateTime.UtcNow.AddHours(1);
+                    schoolPortalData.LastModifiedDate = DateTime.UtcNow.AddHours(1);
                     schoolPortalData.DateCeated = DateTime.UtcNow.AddHours(1);
                     db.SchoolPortalDatas.Add(schoolPortalData);
                     await db.SaveChangesAsync();
@@ -552,6 +681,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                 string endurl = "/api/SchoolApi/GetSchoolSessions";
                 string starturl = "http://";
                 string apiUrl = String.Format(starturl + item.PortalUrl + endurl);
+                apiUrl = apiUrl.Replace("http://http://", "http://");
 
                 WebRequest requestObj = WebRequest.Create(apiUrl);
                 requestObj.Method = "GET";

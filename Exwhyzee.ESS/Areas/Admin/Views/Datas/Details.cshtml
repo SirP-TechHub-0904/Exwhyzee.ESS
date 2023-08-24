@@ -179,10 +179,11 @@
                 </div>
              
 
-        <div class="box-footer">
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" }) 
-            <a href="javascript: history.back()" class="btn btn-default">Cancel</a>
-        </div>
+                <div class="box-footer">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("sessions", "SchoolSessions", new { url = Model.PortalUrl })
+                    <a href="javascript: history.back()" class="btn btn-default">Cancel</a>
+                </div>
 
         
         </div>

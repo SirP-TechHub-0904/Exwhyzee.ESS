@@ -194,7 +194,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
                     MailMessage mail = new MailMessage();
 
                     //set the addresses 
-                    mail.From = new MailAddress("learnonline@iskools.com"); //IMPORTANT: This must be same as your smtp authentication address.
+                    mail.From = new MailAddress("learnonline@iskools.com.ng"); //IMPORTANT: This must be same as your smtp authentication address.
                     mail.To.Add("espErrorMail@exwhyzee.ng");
                     mail.To.Add("iskoolsportal@gmail.com");
                     mail.To.Add("onwukaemeka41@gmail.com");
@@ -204,14 +204,14 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
 
                     mail.Subject = " Live Class Request from " + "Iskools";
 
-                    mass = "Iskools" + " - " + "www.iskools.com" + "/Admin/OnlineClass/DetailsLiveClass/" + data.id + " - visit for more info";
+                    mass = "Iskools" + " - " + "www.iskools.com.ng" + "/Admin/OnlineClass/DetailsLiveClass/" + data.id + " - visit for more info";
 
                     mail.Body = mass;
                     //send the message 
-                    SmtpClient smtp = new SmtpClient("mail.iskools.com");
+                    SmtpClient smtp = new SmtpClient("mail.iskools.com.ng");
 
                     //IMPORANT:  Your smtp login email MUST be same as your FROM address. 
-                    NetworkCredential Credentials = new NetworkCredential("learnonline@iskools.com", "Exwhyzee@123");
+                    NetworkCredential Credentials = new NetworkCredential("learnonline@iskools.com.ng", "Exwhyzee@123");
                     smtp.Credentials = Credentials;
                     smtp.Send(mail);
 

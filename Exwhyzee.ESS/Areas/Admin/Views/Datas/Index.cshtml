@@ -4,20 +4,55 @@
     ViewBag.Title = "Index";
 }
 
+<style>
+    .bg-info {
+        background-color: #468fb3;
+    }
 
+    .bg-success {
+        background-color: #81c167;
+    }
+
+    .bg-warning {
+        background-color: #cdb94c;
+    }
+
+    .bg-danger {
+        background-color: #f96666;
+    }
+
+    .small-box h3 {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 0 0 10px 0;
+        white-space: nowrap;
+        padding: 0;
+    }
+
+    .small-box p {
+        font-size: 19px;
+        font-weight: 900;
+        margin: 0 0 1px;
+    }
+
+    .small-box h3 {
+        font-size: 20px;
+        font-weight: 900;
+        margin: 0 0 1px 0;
+        white-space: nowrap;
+        padding: 0;
+    }
+
+    .col-lg-4 a {
+        color: white;
+    }
+</style>
 <div class="row">
     <div class="col-xs-12">
         <div class="box" style="padding:7px;">
             <div class="box-header" style="margin-bottom:15px;">
-                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> Class Management</h3>
+                <h3 class="box-title"><i class="fa fa-fw fa-file-text-o"></i> SCHOOL DASHBOARD</h3>
 
-                <div class="box-tools">
-                    
-                        @Html.ActionLink("New School", "Create", null, new { @class = "btn btn-success", style = "padding: 7px;" })
-                       
-                        @Html.ActionLink("Refresh All", "RefreshAll", null, new { @class = "btn btn-primary", style = "padding: 7px;" })
-
-                </div>
                 @if (TempData["success"] != null)
                 {
                     <div class="alert alert-danger alert-dismissible">
@@ -28,106 +63,216 @@
                 }
             </div>
             <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
-                <table id="example1" class="table table-bordered table-hover" border="1">
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
 
-                    <thead>
-                        <tr>
-                            <th>S/N</th>
-                            <th>Type</th>
-                            <th>
-                                School Name
-                            </th>
-                            <th>Phone Number</th>
-                            <th>Type</th>
-                            <th>Enrolled</th>
-                            <th>Frontend Url</th>
-                            <th>Portal Url</th>
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>@ViewBag.schools</h3>
 
-                            <th>Current Session</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @{
-                            int sno = 0;
-                        }
-                        @foreach (var item in Model)
-                        {
-                        <tr>
-                            <td>
-                                @{ sno++; }
-                                @sno
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.AddAsActive)
-                            </td>
-
-                            <td>
-                                <a target="_blank" href="@item.PortalUrl">
-                                    @Html.DisplayFor(modelItem => item.SchoolName)
-                                </a>
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ContactPhoneNumber)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.SchoolType)
-                            </td>
-
-                            <td>
-                                @if (item.EnrolStudentsCount != null)
-                                {
-                                    @item.EnrolStudentsCount
-
-                                }
-                                else
-                                {
-                                    @item.EnrolStudentsCount
-                                }
-                            </td>
-                            <td>
-                                <a target="_blank" href="http://@item.WebUrl">
-                                    @Html.DisplayFor(modelItem => item.WebUrl)
-                                </a>
-                            </td>
-                            <td>
-                                <a target="_blank" href="@item.PortalUrl">
-
-                                    @Html.DisplayFor(modelItem => item.PortalUrl)
-                                </a>
-                            </td>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CurrentSession)
-                            </td>
-
-                            <td>
-
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                        Action
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-
-                                        <li>@Html.ActionLink("Add As Active", "AddToList", new { id = item.Id })</li>
-                                        <li>@Html.ActionLink("Update School", "UpdateSchool", new { id = item.Id })</li>
-                                        <li>@Html.ActionLink("Add Number", "AddNumber", new { id = item.Id })</li>
-                                        <li>@Html.ActionLink("Details", "Details", new { id = item.Id })</li>
-                                        <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
-                                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</li>
-                                        <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id })</li>
-                                        <li> @Html.ActionLink("Refresh", "RefreshSingleSchool", new { url = item.PortalUrl })</li>
-                                        <li>@Html.ActionLink("sessions", "SchoolSessions", new { url = item.PortalUrl })</li>
-                                    </ul>
+                                    <p>Total Schools</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
                                 </div>
 
-                            </td>
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin", typex = "prim", active = false})">
+
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>@ViewBag.Primary</h3>
+
+                                    <p>Primary</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin", typex = "second", active = false})">
+
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>@ViewBag.Secondary</h3>
+
+                                    <p>Secondary</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin",active = true})">
+
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>@ViewBag.Active</h3>
+
+                                    <p>Active Schools</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin", typex = "prim", active = true})">
+
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>@ViewBag.AllPrimary</h3>
+
+                                    <p>Active Primary</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin", typex = "second", active = true})">
+
+                            <div class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3>@ViewBag.AllSecondary</h3>
+
+                                    <p>Active Secondary</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
+
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>@ViewBag.Nonactive</h3>
+
+                                    <p>Non Active</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
+
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>@ViewBag.ActiveEnrolledStudents</h3>
+
+                                    <p>Active Enrolled</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
+
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>@ViewBag.TotalStaff</h3>
+
+                                    <p>Total Staff</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
+
+                            <div class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>@ViewBag.Totalcard</h3>
+
+                                    <p>Total Cards</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
+
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>@ViewBag.Usedcard</h3>
+
+                                    <p>Total Used Cards</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-4 col-6">
+                        <!-- small box -->
+                        <a href="@Url.Action("Schools", "Datas", new { area="Admin"})">
+
+                            <div class="small-box bg-warning">
+                                <div class="inner">
+                                    <h3>@ViewBag.NonUsedcard</h3>
+
+                                    <p>Total Non Used card</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
             </div>
             <!-- /.box-body -->
         </div>
@@ -137,34 +282,6 @@
 
 
 
-
-@section Style {
-
-    <link rel="stylesheet" href="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-}
-
-@section Scripts {
-    <!-- DataTables -->
-    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="http://exwhyzee.ng/libraries/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-
-}
-
-@section Scripts2 {
-    <script>
-        $(function () {
-            $('#example1').DataTable()
-            $('#example2').DataTable({
-                'paging': true,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': true,
-                'info': true,
-                'autoWidth': false
-            })
-        })
-    </script>
-}
 
 
 

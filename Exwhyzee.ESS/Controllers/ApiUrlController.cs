@@ -26,7 +26,7 @@ namespace Exwhyzee.ESS.Controllers
             try
             {
                 var sresult = db.Posts.ToList();
-                //http://iskools.com/Uploads/
+                //http://iskools.com.ng/Uploads/
                 var query = sresult.Select(c => new PostDto()
                 {
                     Id = c.Id,
@@ -38,7 +38,7 @@ namespace Exwhyzee.ESS.Controllers
                     WhoCanSeePost = c.WhoCanSeePost,
                     PostedBy = c.PostedBy,
                     SortOrder = c.SortOrder,
-                    PostImage = "http://iskools.com/Uploads/" + c.PostImage
+                    PostImage = "http://iskools.com.ng/Uploads/" + c.PostImage
                 }).ToList();
 
                 var output = IskoolHelper.Shuffle(query, size);
@@ -72,7 +72,7 @@ namespace Exwhyzee.ESS.Controllers
                 WhoCanSeePost = c.WhoCanSeePost,
                 PostedBy = c.PostedBy,
                 SortOrder = c.SortOrder,
-                PostImage = "http://iskools.com/Uploads/" + c.PostImage
+                PostImage = "http://iskools.com.ng/Uploads/" + c.PostImage
             };
 
             if (post == null)

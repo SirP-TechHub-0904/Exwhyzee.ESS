@@ -1150,7 +1150,7 @@
     <Content Include="Areas\Admin\Views\Datas\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Datas\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Datas\Schools.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\SchoolSessions.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\SessionsDetails.cshtml" />
     <Content Include="Areas\Admin\Views\Schools\Create.cshtml" />
@@ -1577,9 +1577,11 @@
     <Content Include="Areas\Admin\Views\SchoolCategories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\ViewSchools.cshtml" />
     <Content Include="Areas\Admin\Views\Datas\UpdateSchool.cshtml" />
-    <Content Include="Content\site44.PublishSettings" />
+    <Content Include="Areas\Admin\Views\Datas\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings1.pubxml" />
+    <None Include="Properties\PublishProfiles\exwhyzee-001-site44 - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\exwhyzee-001-site44 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Properties\PublishProfiles\Iskools.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
