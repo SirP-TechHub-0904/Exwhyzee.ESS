@@ -143,6 +143,7 @@ namespace Exwhyzee.ESS.Areas.Admin.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public async Task<ActionResult> Delete(string id)
         {
             var user = await db.Users.FirstOrDefaultAsync(x=>x.Id == id);
