@@ -852,54 +852,54 @@
                             <li><a href="@Url.Action("About", "Iskools")" class="nav-item">About Us</a></li>
 
                             <li class="nav-item dropdown">
-                                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Resources<span class="fa fa-angle-down icons-dropdown"></span></a>
-                                <ul class="dropdown-menu edugate-dropdown-menu-1">
-                                    <li>
-                                        <a class="dropdown-item" href="http://iskools.com.ng/Simulations/Initializer"> Practical Simulation</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="http://schoolmanagement.iskools.com.ng/Account/Login"> Online CBT</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="http://iskools.com.ng/ELibrary/Ebooks"> E-Library</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="http://iskools.com.ng/Games/Initializer"> Online Game</a>
-                                    </li>
+                                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Services<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                @*<ul class="dropdown-menu edugate-dropdown-menu-1">
+                <li>
+                    <a class="dropdown-item" href="http://iskools.com.ng/Simulations/Initializer"> Practical Simulation</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="http://schoolmanagement.iskools.com.ng/Account/Login"> Online CBT</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="http://iskools.com.ng/ELibrary/Ebooks"> E-Library</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="http://iskools.com.ng/Games/Initializer"> Online Game</a>
+                </li>
 
-                                </ul>
+            </ul>*@
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Topics<span class="fa fa-angle-down icons-dropdown"></span></a>
-                                <ul class="dropdown-menu edugate-dropdown-menu-1">
-                                    <li>
-                                        @Html.ActionLink("KG/Nursery", "SubjectIndex", "Tutor", new { enumm = 1, fgc = "Kg and Nursery" }, new { @class = "dropdown-item" })
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Primary", "SubjectIndex", "Tutor", new { enumm = 3, fgc = "Primary" }, new { @class = "dropdown-item" })
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Secondary", "SubjectIndex", "Tutor", new { enumm = 4, fgc = "Secondary" }, new { @class = "dropdown-item" })
-                                    </li>
-                                    <li>
-                                        @Html.ActionLink("Motivational", "SubjectIndex", "Tutor", new { enumm = 5, fgc = "Motivational" }, new { @class = "dropdown-item" })
-                                    </li>
+                                <a href="javascript:void(0)" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true">Overview<span class="fa fa-angle-down icons-dropdown"></span></a>
+                                @*<ul class="dropdown-menu edugate-dropdown-menu-1">
+                <li>
+                    @Html.ActionLink("KG/Nursery", "SubjectIndex", "Tutor", new { enumm = 1, fgc = "Kg and Nursery" }, new { @class = "dropdown-item" })
+                </li>
+                <li>
+                    @Html.ActionLink("Primary", "SubjectIndex", "Tutor", new { enumm = 3, fgc = "Primary" }, new { @class = "dropdown-item" })
+                </li>
+                <li>
+                    @Html.ActionLink("Secondary", "SubjectIndex", "Tutor", new { enumm = 4, fgc = "Secondary" }, new { @class = "dropdown-item" })
+                </li>
+                <li>
+                    @Html.ActionLink("Motivational", "SubjectIndex", "Tutor", new { enumm = 5, fgc = "Motivational" }, new { @class = "dropdown-item" })
+                </li>
 
-                                </ul>
+            </ul>*@
                             </li>
 
                             <li>
-                                @Html.ActionLink("Find a Teacher", "Teacher", "Iskools", new { area = "" }, new { @class = "" })
+            <a href="#" class="nav-item">Features</a></li>
 
-                            </li>
-                            <li>
-                                @Html.ActionLink("Be a Volunteer", "Volunteer", "Iskools", new { area = "" }, new { @class = "" })
+        
+        <li>
+           <a href="#" class="nav-item">Careers</a></li>
 
-                            </li>
+       
 
-                            <li><a href="@Url.Action("Contact", "Iskools")" class="nav-item">Contact</a></li>
+                            <li><a href="@Url.Action("Contact", "Iskools")" class="nav-item">Contact us</a></li>
 
-                            @Html.Partial("_LoginPartial")
+                            @*@Html.Partial("_LoginPartial")*@
 
                         </ul>
                     </div>
@@ -916,39 +916,53 @@
             <aside class="aside container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-6 col-md-3 col hidden-xs">
-                        <h3>Popular Topics</h3>
+                        <h3>Company</h3>
                         <!-- widget cources list -->
-                        <ul class="widget-cources-list list-unstyled">
-                            @Html.Action("_TopicsFooter", "Tutor")
-
+                        <ul class="fooer-navigation list-unstyled">
+                            @*@Html.Action("_TopicsFooter", "Tutor")*@
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About us </a></li>
+                            <li><a href="#">Services</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">Career</a></li>
 
                         </ul>
                     </div>
 
                     <div class="col-xs-12 col-sm-6 col-md-3 col hidden-xs">
-                        <h3>Latest Events</h3>
+                        <h3>Resources</h3>
                         <!-- widget cources list -->
-                        <ul class="widget-cources-list list-unstyled">
+                        <ul class="fooer-navigation list-unstyled">
 
-                            @Html.Action("_EventsFooter", "Tutor")
-
+                            @*@Html.Action("_EventsFooter", "Tutor")*@
+                            <li><a href="#">Community</a></li>
+                            <li><a href="#">Request Demo </a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">Certification</a></li>
+                            <li><a href="#">Scholarships</a></li>
 
                         </ul>
                     </div>
                     <nav class="col-xs-12 col-sm-6 col-md-3 col">
-                        <h3>Quick Links</h3>
+                        <h3>Help</h3>
                         <!-- fooer navigation -->
                         <ul class="fooer-navigation list-unstyled">
-                            <li><a href="http://iskools.com.ng/tutor/classindex">All Courses/Topics</a></li>
-                            <li><a href="http://iskools.com.ng/tutor/AskQuestion">Ask Questions</a></li>
-                            <li><a href="@Url.Action("Features", "Iskools")">Features</a></li>
-                            <li><a href="@Url.Action("Benefits", "Iskools")">Benefits</a></li>
-                            <li><a href="@Url.Action("Listing", "Iskools")">School Listing</a></li>
 
-                            <li><a href="http://schoolmanagement.iskools.com.ng/">School Portal Management Software</a></li>
-                            <li><a href="#">C B T Software</a></li>
-                            <li><a href="@Url.Action("Index", "Initializer", new { area = "Simulations" })">Emulators Softwares</a></li>
-                            <li><a href="@Url.Action("Contact", "Iskools")" class="nav-item">Contact</a></li>
+                            <li><a href="#">Customer Support</a></li>
+                            <li><a href="#">Terms & Conditions </a></li>
+                            <li><a href="#">Privacy & Policy</a></li>
+                           
+
+                            @*<li><a href="http://iskools.com.ng/tutor/classindex">All Courses/Topics</a></li>
+        <li><a href="http://iskools.com.ng/tutor/AskQuestion">Ask Questions</a></li>
+        <li><a href="@Url.Action("Features", "Iskools")">Features</a></li>
+        <li><a href="@Url.Action("Benefits", "Iskools")">Benefits</a></li>
+        <li><a href="@Url.Action("Listing", "Iskools")">School Listing</a></li>
+
+        <li><a href="http://schoolmanagement.iskools.com.ng/">School Portal Management Software</a></li>
+        <li><a href="#">C B T Software</a></li>
+        <li><a href="@Url.Action("Index", "Initializer", new { area = "Simulations" })">Emulators Softwares</a></li>
+        <li><a href="@Url.Action("Contact", "Iskools")" class="nav-item">Contact</a></li>*@
 
                         </ul>
                     </nav>
@@ -1233,7 +1247,7 @@
             </ul>
         </div>
     }
-    <div id="pModal" class="modal fade" role="dialog">
+    <div id="pModal" class="modal fade" role="dialog"> 
         <div class="modal-dialog">
 
             <!-- Modal content-->

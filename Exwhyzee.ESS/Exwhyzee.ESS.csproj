@@ -859,6 +859,8 @@
     <Content Include="Content\img\icon123.png" />
     <Content Include="Content\img\icon13.png" />
     <Content Include="Content\img\icon_iskools.png" />
+    <Content Include="Content\img\img16.jpg" />
+    <Content Include="Content\img\img56.jpg" />
     <Content Include="Content\img\iskool-1-mide.jpg" />
     <Content Include="Content\img\iskool-2-mdeis.jpg" />
     <Content Include="Content\img\iskool-web-banner.jpg" />
@@ -877,6 +879,9 @@
     <Content Include="Content\img\Untitled-2.jpg" />
     <Content Include="Content\img\win-card.jpg" />
     <Content Include="Content\img\windata.jpg" />
+    <Content Include="Content\iskools\sk.css" />
+    <Content Include="Content\iskools\sko.css" />
+    <Content Include="Content\iskools\skool.css" />
     <Content Include="Content\iskool\bootstrap.css" />
     <Content Include="Content\iskool\colors.css" />
     <Content Include="Content\iskool\css.css" />
