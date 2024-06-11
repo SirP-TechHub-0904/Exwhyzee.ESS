@@ -1,0 +1,28 @@
+:root {
+  --second-text-color: rgba(115, 115, 115, 1);
+  --muted-color: rgba(189, 189, 189, 1);
+  --navigation-font-family: "Manrope", Helvetica;
+  --navigation-font-weight: 600;
+  --navigation-font-size: 16px;
+  --navigation-letter-spacing: 0.32px;
+  --navigation-line-height: 100%;
+  --navigation-font-style: normal;
+  --heading-4-font-family: "Manrope", Helvetica;
+  --heading-4-font-weight: 700;
+  --heading-4-font-size: 24px;
+  --heading-4-letter-spacing: 0px;
+  --heading-4-line-height: normal;
+  --heading-4-font-style: normal;
+  --paragraph-font-family: "DM Sans", Helvetica;
+  --paragraph-font-weight: 400;
+  --paragraph-font-size: 16px;
+  --paragraph-letter-spacing: 0px;
+  --paragraph-line-height: 26px;
+  --paragraph-font-style: normal;
+  --button-font-family: "Manrope", Helvetica;
+  --button-font-weight: 600;
+  --button-font-size: 14px;
+  --button-letter-spacing: 0px;
+  --button-line-height: 100%;
+  --button-font-style: normal;
+}

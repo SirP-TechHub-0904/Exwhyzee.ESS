@@ -882,6 +882,8 @@
     <Content Include="Content\iskools\sk.css" />
     <Content Include="Content\iskools\sko.css" />
     <Content Include="Content\iskools\skool.css" />
+    <Content Include="Content\iskools\style.css" />
+    <Content Include="Content\iskools\styleguide.css" />
     <Content Include="Content\iskool\bootstrap.css" />
     <Content Include="Content\iskool\colors.css" />
     <Content Include="Content\iskool\css.css" />
